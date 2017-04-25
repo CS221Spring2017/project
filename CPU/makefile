@@ -7,3 +7,7 @@ cpu1 :
 	mv procedure.o build;
 	g++ -Iinclude -o system.o system.c;
 	mv system.o build;
+	g++ -Iinclude -o create_process.o create_process.c;
+	mv create_process.o build;
+	g++ -pthread -Iinclude -o create_thread.o create_thread.c;
+	mv create_thread.o build;

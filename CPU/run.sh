@@ -14,4 +14,7 @@ wait;
 echo '---procedure overhead---'
 ./build/procedure.o 10000
 echo '---system call overhead---'
-./build/system.o 100
+./build/system.o 10
+echo '---task creation (process) overhead---'
+./build/create_process.o 100
+

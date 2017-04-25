@@ -1,11 +1,16 @@
 #include "stdlib.h"
 #include "stdio.h"
-#include "unistd.h"
+#include <pthread.h>
+#include <unistd.h>
 
 static inline unsigned long long rdtsc(void) {
 	unsigned lo, hi;
 	__asm__ __volatile__("xor %%eax, %%eax;" "cpuid;" "rdtsc;": "=a" (lo), "=d" (hi));
 	return (((unsigned long long int)hi << 32) | lo);
+}
+
+void *foo(void *argv){
+	pthread_exit(NULL);
 }
 
 int main(int argc, char** argv)
@@ -14,23 +19,16 @@ int main(int argc, char** argv)
 	unsigned long long time = 0;
 	unsigned long long begin, end;
 
-	for(int i = 0; i < nloops; i++)
+	for(int i = 0; i< nloops; i++)
 	{
-		pid_t pid = fork();
-		if(pid == 0)
-		{
-			begin = rdtsc();
-			getpid();
-			end = rdtsc();
-			time = end - begin;
-			printf("%llu cycles\n", time);	
-			return 0;		
-		}
-		if(pid == -1)
-		{
-			printf("fork faliled\n");
-			return 0;
-		}
-	}	
+		pthread_t thread;
+		long temp;
+		begin = rdtsc();
+		pthread_create(&thread, NULL, foo, (void *) temp);
+		end = rdtsc();
+		time += (end - begin);
+		pthread_join(thread, NULL);
+	}
+	printf("%llu cycles\n", time / nloops);
 	return 0;
 }
