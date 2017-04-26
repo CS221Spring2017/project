@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "rdtsc.h"
+
+static inline unsigned long long rdtsc(void) {
+    unsigned lo, hi;
+    __asm__ __volatile__("xor %%eax, %%eax;" "cpuid;" "rdtsc;": "=a" (lo), "=d" (hi));
+    return (((unsigned long long)hi << 32) | (unsigned long long)lo);
+}
 
 int main(int argc, char* argv[]){
 	int nloops = atoi(argv[1]);
