@@ -1,13 +1,21 @@
 cpu1 : 
-	g++ -Iinclude -o measure1.out measure1.c;
+	gcc -Iinclude -o measure1.out measure1.c;
 	mv measure1.out build;
-	g++ -Iinclude -o measure2.out measure2.c;
+	gcc -Iinclude -o measure2.out measure2.c;
 	mv measure2.out build;
-	g++ -Iinclude -o procedure.o procedure.c;
+
+	gcc -Iinclude -o procedure.o procedure.c;
 	mv procedure.o build;
-	g++ -Iinclude -o system.o system.c;
+
+	gcc -Iinclude -o system.o system.c;
 	mv system.o build;
-	g++ -Iinclude -o create_process.o create_process.c;
+
+	gcc -Iinclude -o create_process.o create_process.c;
 	mv create_process.o build;
-	g++ -pthread -Iinclude -o create_thread.o create_thread.c;
+	gcc -pthread -Iinclude -o create_thread.o create_thread.c;
 	mv create_thread.o build;
+
+	gcc -Iinclude -o context_switch_p.o context_switch_p.c;
+	mv context_switch_p.o build;
+	gcc -pthread -Iinclude -o context_switch_t.o context_switch_t.c;
+	mv context_switch_t.o build;
