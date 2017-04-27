@@ -27,7 +27,7 @@ wait;
 
 echo '---task creation (process) overhead---'
 for i in `seq 10`
-do ./build/create_process.o 10000
+do ./build/create_process.o 100
 done &
 wait;
 
@@ -39,7 +39,7 @@ wait;
 
 echo '---Context switch (process) overhead---'
 for i in `seq 10`
-do ./build/context_switch_p.o 10000
+do ./build/context_switch_p.o 1000
 done &
 wait;
 

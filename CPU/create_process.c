@@ -10,8 +10,7 @@ static inline unsigned long long rdtsc(void) {
 }
 
 int main(int argc, char **argv) {   
- 
-    unsigned long long time_switch = 133221;
+
     
     int nloops = atoi(argv[1]);
     unsigned long long total = 0;
@@ -27,13 +26,13 @@ int main(int argc, char **argv) {
             exit(-1);
         }
         
-        if (pid == 0) {//child process
-            exit(-1);
+        else if (pid == 0) {//child process
+            exit(1);
         } else {//parent process
             wait(NULL);
             end = rdtsc();
-            unsigned long long diff = end - begin;
-            total += (diff - 2*time_switch);
+
+            total += (end-begin);
         }
     }
 

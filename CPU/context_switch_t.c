@@ -6,10 +6,11 @@
 static inline unsigned long long rdtsc(void) {
     unsigned lo, hi;
     __asm__ __volatile__("xor %%eax, %%eax;" "cpuid;" "rdtsc;": "=a" (lo), "=d" (hi));
-    return (((unsigned long long int)hi << 32) | lo);
+    return (((unsigned long long )hi << 32) | (unsigned long long)lo);
 }
 
 int pipecs[2];
+int counter=0;
 
 void *func(void *tid) {
     unsigned long long end;
@@ -34,16 +35,20 @@ int main(int argc, char **argv) {
         
         unsigned long long begin, end, difference;
         begin = rdtsc();
-
-        read(pipecs[0], &end, sizeof(end));
-        difference = end - begin;
-        total += difference;
         
         pthread_join(thread, NULL);
+        read(pipecs[0], &end, sizeof(end));
+
+        if (end>begin)
+            {
+                difference = (end - begin);
+                total += difference;
+                counter++;
+            }
 
     }
 
-    printf("%llu cycles\n", total/nloops);
+    printf("%llu cycles\n", total/counter);
 
     return 0;
 }
