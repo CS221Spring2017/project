@@ -11,7 +11,7 @@ static inline unsigned long long rdtsc(void) {
 }
 //Size of memory region accessing ranging from 2^2KB to 2^22 kb = 4 GB
 #define min_array_size 2
-#define max_array_size 19
+#define max_array_size 20
 #define NANOS_CONVERT 1000000000.0
 #define COUNT 10000
 //Size of memory region that we will accessed, ranging from 4KB to 512MB
