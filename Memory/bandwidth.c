@@ -11,6 +11,7 @@ static inline unsigned long long rdtsc(void) {
 
 int main(int argc, char*argv[])
 {
+	
 	int size_mb = 256;
 	long long size = size_mb * 1024 * 1024;
 	long long *space = (long long*) malloc(size * sizeof(long long));
@@ -20,10 +21,13 @@ int main(int argc, char*argv[])
 	//read bandwidth
 	nloops = 10;
 	begin = rdtsc();
+
+
 	for (int j = 0; j < nloops; j++)
 	{
-		for(long long i = 0; i < size; i = i + 10)
+		for(long long i = 0; i < size; i = i + 16)
 		{
+
 			long long n0 = space[i];
 			long long n1 = space[i+1];
 			long long n2 = space[i+2];
@@ -34,17 +38,26 @@ int main(int argc, char*argv[])
 			long long n7 = space[i+7];
 			long long n8 = space[i+8];
 			long long n9 = space[i+9];
+			long long n10 = space[i+10];
+			long long n11 = space[i+11];
+			long long n12 = space[i+12];
+			long long n13 = space[i+13];
+			long long n14 = space[i+14];
+			long long n15 = space[i+15];
+
 		}
 	}
+
 	end = rdtsc();
 	time = end - begin;
+
 	printf("read bandwidth(unrolled) = %f GB/s\n", sizeof(long long)*nloops*size_mb/1024/(time*0.34/1e9));
 	
 	long long delta = size/2;
 	begin = rdtsc();
 	for (int j = 0; j < nloops; j++)
 	{
-		for(long long i = 0; i < size/2; i = i + 5)
+		for(long long i = 0; i < size/2; i = i + 16)
 		{
 			long long n0 = space[i];
 			long long n1 = space[i+delta];
@@ -56,6 +69,12 @@ int main(int argc, char*argv[])
 			long long n7 = space[i+3+delta];
 			long long n8 = space[i+4];
 			long long n9 = space[i+4+delta];
+			long long n10 = space[i+5];
+			long long n11 = space[i+5+delta];
+			long long n12 = space[i+6];
+			long long n13 = space[i+6+delta];
+			long long n14 = space[i+7];
+			long long n15 = space[i+7+delta];
 		}
 	}
 	end = rdtsc();
@@ -66,7 +85,7 @@ int main(int argc, char*argv[])
 	long long val = 0;
 	for (int j = 0; j < nloops; j++)
 	{
-		for(long long i = 0; i < size; i = i + 10)
+		for(long long i = 0; i < size; i = i + 16)
 		{
 			val = space[i];
 			val = space[i+1];
@@ -78,6 +97,12 @@ int main(int argc, char*argv[])
 			val = space[i+7];
 			val = space[i+8];
 			val = space[i+9];
+			val = space[i+10];
+			val = space[i+11];
+			val = space[i+12];
+			val = space[i+13];
+			val = space[i+14];
+			val = space[i+15];
 		}
 	}
 	long long a = val;
@@ -89,7 +114,7 @@ int main(int argc, char*argv[])
 	val = 0;
 	for (int j = 0; j < nloops; j++)
 	{
-		for(long long i = 0; i < size/2; i = i + 10)
+		for(long long i = 0; i < size/2; i = i + 16)
 		{
 			val = space[i];
 			val = space[i+delta];
@@ -101,6 +126,12 @@ int main(int argc, char*argv[])
 			val = space[i+3+delta];
 			val = space[i+4];
 			val = space[i+4+delta];
+			val = space[i+5];
+			val = space[i+5+delta];
+			val = space[i+6];
+			val = space[i+6+delta];
+			val = space[i+7];
+			val = space[i+7+delta];
 		}
 	}
 	long long b = val;
@@ -125,7 +156,7 @@ int main(int argc, char*argv[])
 	begin = rdtsc();
 	for (int j = 0; j < nloops; j++)
 	{
-		for(long long i = 0; i < size; i = i + 10)
+		for(long long i = 0; i < size; i = i + 16)
 		{
 			space[i] = 1;
 			space[i+1] = 2;
@@ -137,6 +168,12 @@ int main(int argc, char*argv[])
 			space[i+7] = 8;
 			space[i+8] = 9;
 			space[i+9] = 10;
+			space[i+10] = 11;
+			space[i+11] = 12;
+			space[i+12] = 13;
+			space[i+13] = 14;
+			space[i+14] = 15;
+			space[i+15] = 16;
 		}
 	}
 	end = rdtsc();
@@ -146,7 +183,7 @@ int main(int argc, char*argv[])
 	begin = rdtsc();
 	for (int j = 0; j < nloops; j++)
 	{
-		for(long long i = 0; i < size/2; i = i + 5)
+		for(long long i = 0; i < size/2; i = i + 16)
 		{
 			space[i] = i;
 			space[i+delta] = i+delta;
@@ -158,6 +195,12 @@ int main(int argc, char*argv[])
 			space[i+3+delta] = i+3;
 			space[i+4] = i+4;
 			space[i+4+delta] = i+4;
+			space[i+5] = i+5;
+			space[i+5+delta] = i+5+delta;
+			space[i+6] = i+6;
+			space[i+6+delta] = i+6+delta;
+			space[i+7] = i+7+delta;
+			space[i+7+delta] = i+7+delta;
 		}
 	}
 	end = rdtsc();
@@ -196,7 +239,7 @@ int main(int argc, char*argv[])
 	time = end - begin;
 	printf("write bandwidth(asm) = %f GB/s\n", sizeof(long long)*nloops*size_mb/1024/(time*0.34/1e9));
 
-
+	
 	free(space);
 	return 0;
 }
