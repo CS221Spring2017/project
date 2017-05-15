@@ -14,7 +14,7 @@ static inline unsigned long long rdtsc(void) {
 int main(int argc, char*argv[])
 {
 	long long offset = 16 * 1024 * 1024;
-	long long filesize = 512 * 1024 * 1024;
+	long long filesize = 256 * 1024 * 1024;
 	int nloop = 50;
 
 	//create a file
@@ -48,7 +48,7 @@ int main(int argc, char*argv[])
 	}
 	end = rdtsc();
 	time = end - begin;
-	printf("Page Fault = %f cycles\n", time * 1.0 / nloop);
+	printf("Page Fault = %f ms\n", ((time-110) * 1.0 / nloop - 8 )*3.4e-7)  ;
 	munmap(map, filesize);
 	close(file);
 	return 0;

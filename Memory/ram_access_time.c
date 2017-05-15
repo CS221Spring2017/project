@@ -9,35 +9,36 @@ static inline unsigned long long rdtsc(void) {
     __asm__ __volatile__("xor %%eax, %%eax;" "cpuid;" "rdtsc;": "=a" (lo), "=d" (hi));
     return (((unsigned long long)hi << 32) | (unsigned long long)lo);
 }
-//Size of memory region accessing ranging from 2^2KB to 2^22 kb = 4 GB
-#define min_array_size 2
-#define max_array_size 20
+//Size of memory region accessing ranging from 2KB to 2^22 kb = 4 GB
+#define min_array_size 1
+#define max_array_size 18
 #define NANOS_CONVERT 1000000000.0
-#define COUNT 10000
+#define COUNT 500
 //Size of memory region that we will accessed, ranging from 4KB to 512MB
 //int sizeList[18] = {4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288};
 //The step length of KB
-int strideList[7] = {4, 64, 128, 1024, 1048576, 4194304, 16777216};
+int strideList[] = {4,16, 32, 64, 128,256, 1024,1024*2,1024*4, 1024*5,1024*8};
 
-void stride_array(int loops, FILE *output, int stride);
+void stride_array( FILE *output, int stride);
 
 
 int main(int argc, const char * argv[])
 {
     if(argc < 2) {
-        printf ("please specify the loop time.\n");
+        printf ("please specify the stride size.\n");
         exit(0);
     }
 
-    unsigned long long loops = atoi(argv[1]);
+    unsigned long long o = atoi(argv[1]);
     
 
 	FILE *file;
 
-	file = fopen("ram_access_time", "w");
+	file = fopen("ram_access_time_3", "a");
 
-	stride_array(loops, file, 32);
-
+    for(int i=0;i<9;i++){
+        stride_array( file, strideList[i]);
+    }
     fclose(file);
     return 0;
 }
@@ -90,57 +91,55 @@ void fixedStride(int strideIndex, FILE *file, int ts)
 }
 */
 
-void stride_array(int loops, FILE *output, int stride)
+void stride_array( FILE *output, int stride)
 {
-    for (int i=0;i< loops;i++){
-        for (int size= min_array_size; size< max_array_size;size++){
 
-            int64_t array_size = (1 << size) * 1024;
+    for (int size= min_array_size; size< max_array_size;size++){
 
-            int * Array;
+        int64_t array_size = (1 << size) * 1024/2;
+        int * Array;
 
-            if (!(Array = (int *)malloc(array_size * sizeof(int))))
-            {
-                fprintf(stderr, "Malloc failure\n");
-                exit(1);
-            }
-
-
-            Array[0] = 0;
-
-            int64_t index;
-
-            for (int64_t i = 0; i < array_size; i++) {
-                index = i + stride;
-                if (index >= array_size) {
-                    index %= array_size;
-                }
-                Array[i] = index;
-            }
-
-            int64_t x = 0;
-            int64_t begin;
-            int64_t end;
-            int64_t total_time = 0;
-
-            begin = rdtsc();
-            for (int i = 0; i < COUNT; i++) {
-                x = Array[x];
-                //printf("%lli\n", x);
-            }
-            end = rdtsc();
-
-            total_time = end - begin;
-            double time = (double)(total_time - 106) / COUNT - 6;
-            free(Array);
-
-            fprintf(output, "%lf\n", time);
-            //printf("%lf\n", time);
+        if (!(Array = (int *)malloc(array_size * sizeof(int))))
+        {
+            fprintf(stderr, "Malloc failure\n");
+            exit(1);
         }
-        fprintf(output, "\n");
-    }
 
+
+        Array[0] = 0;
+
+        int64_t index;
+
+        for (int64_t i = 0; i < array_size; i++) {
+            index = i + stride;
+            if (index >= array_size) {
+                index %= array_size;
+            }
+            Array[i] = index;
+        }
+
+        int64_t x = 0;
+        int64_t begin;
+        int64_t end;
+        int64_t total_time = 0;
+
+        begin = rdtsc();
+        for (int i = 0; i < COUNT; i++) {
+            x = Array[x];
+            //printf("%lli\n", x);
+        }
+        end = rdtsc();
+
+        total_time = end - begin;
+        double time = (double)(total_time - 117) / COUNT - 6;
+        free(Array);
+
+        fprintf(output, "%lf\t", time);
+        //printf("%lf\n", time);
+    }
+        fprintf(output, "\n");
 }
+
 
 /*
 void random(unsigned long long loops, int min,int max)
