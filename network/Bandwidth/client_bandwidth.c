@@ -17,7 +17,7 @@ static inline unsigned long long rdtsc(void) {
 
 int main(int argc , char *argv[])
 {      
-    int sockfd, port, n,size_MB;
+    int sockfd, port, n,size_MB,size;
     struct sockaddr_in serv_addr;
     struct hostent *server;
 
@@ -29,7 +29,8 @@ int main(int argc , char *argv[])
 
     //get port size and create socket
     port = atoi(argv[2]);
-    size_MB = atoi(argv[3])*1024*102;
+    size_MB = atoi(argv[3]);
+    size = size_MB*1024*1024;
 
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -55,7 +56,7 @@ int main(int argc , char *argv[])
         perror("ERROR connecting");
 
     //calcaulate round time
-    char *msg = (char*)malloc(size_MB);
+    char *msg = (char*)malloc(size);
 
     unsigned long long begin,end;
     unsigned long long diff = 0;
@@ -64,7 +65,7 @@ int main(int argc , char *argv[])
     begin = rdtsc();
 
     for(int i=0;i < loops;i++) {
-        if(send(sockfd, msg, size_MB, 0) < 0) {
+        if(send(sockfd, msg, size, 0) < 0) {
             perror("send failed");
             return -1;
         }
