@@ -58,18 +58,20 @@ int main(int argc , char *argv[])
     char *msg = (char*)malloc(size);
     unsigned long long begin,end;
     unsigned long long diff = 0;
+    int counter=size;
 
     begin = rdtsc();
 
     for(int i=0;i < 10;i++) {
         if(send(sockfd, msg, size, 0) < 0) {
+            counter--;
             perror("send failed");
             return -1;
         }
     }
     
     end = rdtsc();
-    printf ("send : %d\n", n);
+    printf ("send : %d\n", counter);
     diff = end - begin;
 
     close(sockfd);

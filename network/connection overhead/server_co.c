@@ -68,7 +68,7 @@ int main(int argc , char *argv[])
 
         diff = end - start;
         
-        printf("connection shutdwon cycle : %llu \n", diff);
+        printf("connection trea down cycle : %llu \n", diff);
         
     }
     close(sockfd);

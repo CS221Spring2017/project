@@ -67,7 +67,7 @@ int main(int argc , char *argv[])
 
     close(sockfd);
 
-    printf ("connection establish cycle is : %llu\n", diff);
+    printf ("connection set up cycle is : %llu\n", diff);
     
     return 0;
 
