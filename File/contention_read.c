@@ -17,10 +17,10 @@ off_t FILE_SIZE  = 64 * 1024 * 1024;
 void sequence_access(char* filename)
 {
 	int file = open(filename, O_RDONLY);
-	/*
+	
 	if(fcntl(file, F_NOCACHE, 1) == -1)
     	printf("Disable Cache Failed.\n");
-	*/
+	
     void *buffer = malloc(BLOCK_SIZE);
     int N = FILE_SIZE / BLOCK_SIZE;
 
@@ -41,11 +41,11 @@ void sequence_access(char* filename)
 void random_access(char* filename)
 {
 	int file = open(filename, O_RDONLY);
-	/*
+	
 	if(fcntl(file, F_NOCACHE, 1) == -1) {
         printf("Failed to disable cache.\n");
     }
-    */
+    
 	void *buffer = malloc(BLOCK_SIZE);
 
 	unsigned long long begin;
