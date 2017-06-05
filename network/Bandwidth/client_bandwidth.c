@@ -13,11 +13,11 @@ static inline unsigned long long rdtsc(void) {
     __asm__ __volatile__("xor %%eax, %%eax;" "cpuid;" "rdtsc;": "=a" (lo), "=d" (hi));
     return (((unsigned long long)hi << 32) | (unsigned long long)lo);
 }
-#define loops 100
+#define loops 1
 
 int main(int argc , char *argv[])
 {      
-    int sockfd, port, n,size;
+    int sockfd, port, n,size_MB;
     struct sockaddr_in serv_addr;
     struct hostent *server;
 
@@ -29,7 +29,7 @@ int main(int argc , char *argv[])
 
     //get port size and create socket
     port = atoi(argv[2]);
-    size = atoi(argv[3]);
+    size_MB = atoi(argv[3])*1024*102;
 
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -55,29 +55,28 @@ int main(int argc , char *argv[])
         perror("ERROR connecting");
 
     //calcaulate round time
-    char *msg = (char*)malloc(size*1024*1024);
+    char *msg = (char*)malloc(size_MB);
 
     unsigned long long begin,end;
     unsigned long long diff = 0;
-    int counter=size;
+    //int counter=size;
 
     begin = rdtsc();
 
     for(int i=0;i < loops;i++) {
-        if(send(sockfd, msg, size, 0) < 0) {
-            counter--;
+        if(send(sockfd, msg, size_MB, 0) < 0) {
             perror("send failed");
             return -1;
         }
     }
     
     end = rdtsc();
-    printf ("send : %d\n", counter);
+    //printf ("send : %d\n", counter);
     diff = end - begin;
 
     close(sockfd);
 
-    printf ("PEAK bandwidth is : %f MB/s \n", (size*loops) / (0.34*diff/1e9) );
+    printf ("PEAK bandwidth is : %f MB/s \n", (size_MB*loops) / (0.34*diff/1e9) );
     
     return 0;
 

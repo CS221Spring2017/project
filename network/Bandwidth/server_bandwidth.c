@@ -12,12 +12,12 @@ static inline unsigned long long rdtsc(void) {
     __asm__ __volatile__("xor %%eax, %%eax;" "cpuid;" "rdtsc;": "=a" (lo), "=d" (hi));
     return (((unsigned long long)hi << 32) | (unsigned long long)lo);
 }
-#define loops 100
+#define loops 1
 
 int main(int argc , char *argv[])
 {
 
-    int sockfd, newsockfd, portno,size;
+    int sockfd, newsockfd, portno,size_MB;
     socklen_t clilen;
     
 	if (argc < 3) {
@@ -25,7 +25,7 @@ int main(int argc , char *argv[])
          exit(1);
      }
     portno = atoi(argv[1]);
-    size = atoi(argv[2]);
+    size_MB = atoi(argv[2])*1024*1024;
 
     //create socket
     struct sockaddr_in serv_addr, cli_addr;
@@ -45,8 +45,8 @@ int main(int argc , char *argv[])
     listen(sockfd,5);
     clilen = sizeof(cli_addr);
 
-    char *msg=(char*)malloc(size*1024*1024+1);
-    memset (msg, 80, size*1024*1024+1);
+    char *msg=(char*)malloc(size_MB+1);
+    memset (msg, 0, size_MB+1);
 
     while(1)
     {
@@ -65,7 +65,7 @@ int main(int argc , char *argv[])
         //begin = rdtsc();
         
         for(int i=0;i < loops;i++) {
-            n = recv(newsockfd, msg, size, MSG_WAITALL);
+            n = recv(newsockfd, msg, size_MB, MSG_WAITALL);
         }
         
         //end = rdtsc();
