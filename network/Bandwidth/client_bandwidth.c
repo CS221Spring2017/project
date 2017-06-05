@@ -13,7 +13,7 @@ static inline unsigned long long rdtsc(void) {
     __asm__ __volatile__("xor %%eax, %%eax;" "cpuid;" "rdtsc;": "=a" (lo), "=d" (hi));
     return (((unsigned long long)hi << 32) | (unsigned long long)lo);
 }
-#define loops 1000
+#define loops 100
 
 int main(int argc , char *argv[])
 {      
@@ -55,14 +55,15 @@ int main(int argc , char *argv[])
         perror("ERROR connecting");
 
     //calcaulate round time
-    char *msg = (char*)malloc(size);
+    char *msg = (char*)malloc(size*1024*1024);
+
     unsigned long long begin,end;
     unsigned long long diff = 0;
     int counter=size;
 
     begin = rdtsc();
 
-    for(int i=0;i < 10;i++) {
+    for(int i=0;i < loops;i++) {
         if(send(sockfd, msg, size, 0) < 0) {
             counter--;
             perror("send failed");
@@ -76,7 +77,7 @@ int main(int argc , char *argv[])
 
     close(sockfd);
 
-    printf ("PEAK bandwidth is : %f MB/s \n", 10*(size/(1024*1.0*1024)) * (2.3e9 / diff) );
+    printf ("PEAK bandwidth is : %f MB/s \n", (size*loops) / (0.34*diff/1e9) );
     
     return 0;
 

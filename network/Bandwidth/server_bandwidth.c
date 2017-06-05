@@ -12,7 +12,7 @@ static inline unsigned long long rdtsc(void) {
     __asm__ __volatile__("xor %%eax, %%eax;" "cpuid;" "rdtsc;": "=a" (lo), "=d" (hi));
     return (((unsigned long long)hi << 32) | (unsigned long long)lo);
 }
-#define loops 1000
+#define loops 100
 
 int main(int argc , char *argv[])
 {
@@ -45,8 +45,8 @@ int main(int argc , char *argv[])
     listen(sockfd,5);
     clilen = sizeof(cli_addr);
 
-    char *msg=(char*)malloc(size+1);
-    memset (msg, 80, size+1);
+    char *msg=(char*)malloc(size*1024*1024+1);
+    memset (msg, 80, size*1024*1024+1);
 
     while(1)
     {
@@ -62,17 +62,18 @@ int main(int argc , char *argv[])
         unsigned long long diff=0;
         int n = 0;
 
-        begin = rdtsc();
+        //begin = rdtsc();
         
-        for(int i=0;i < 10;i++) {
+        for(int i=0;i < loops;i++) {
             n = recv(newsockfd, msg, size, MSG_WAITALL);
         }
         
-        end = rdtsc();
+        //end = rdtsc();
+
         printf ("receive : %d\n", n);
-        diff = end - begin;
+        //diff = end - begin;
         
-        printf ("PEAK bandwidth is : %f MB/s \n", 10*(size/(1024*1.0*1024)) * (2.3e9 / diff) );
+        //printf ("PEAK bandwidth is : %f MB/s \n", 10*(size/(1024*1.0*1024)) * (2.3e9 / diff) );
         
         close(newsockfd);
         return 0;
