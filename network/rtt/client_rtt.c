@@ -13,7 +13,7 @@ static inline unsigned long long rdtsc(void) {
     __asm__ __volatile__("xor %%eax, %%eax;" "cpuid;" "rdtsc;": "=a" (lo), "=d" (hi));
     return (((unsigned long long)hi << 32) | (unsigned long long)lo);
 }
-#define loops 1000
+#define loops 1
 
 int main(int argc , char *argv[])
 {      
@@ -53,19 +53,19 @@ int main(int argc , char *argv[])
         perror("ERROR connecting");
 
     //calcaulate round time
-    char msg = 'a';
     unsigned long long begin,end;
     unsigned long long total = 0;
+    char msg = '0123456789012345678901234567890101234567890123456789012345678901';
 
     for (int j=0; j < loops; j++) {
         begin = rdtsc();
-        send(sockfd, &msg, 1, 0);
+        send(sockfd, &msg, 64, 0);
         recv(sockfd, &msg, 1, 0);
         end = rdtsc();
         total += (end - begin);
     }
 
-    printf ("Round Trip Cycles are : %llu\n", total/loops);
+    printf ("Round Trip Cycles = %llu\n", total/loops);
     
     return 0;
 
