@@ -1,6 +1,7 @@
 from random import randrange
 import numpy
 
+'''
 array_mb = [4, 8, 16, 32, 64, 128, 256]
 array_gb = [1, 2, 4]
 
@@ -15,10 +16,16 @@ for x in array_gb:
   fp.write(content);
   fp.close()
 
-'''
+
 for x in range(16):
 	fp = open("data/file%d" % x, 'w+b')
 	content = numpy.random.bytes(64*1024*1024)
 	fp.write(content)
 	fp.close()
-    '''
+'''
+
+
+fp = open("data/cache", 'w+b')
+content = numpy.random.bytes(8*1024*1024*1024)
+fp.write(content)
+fp.close()
