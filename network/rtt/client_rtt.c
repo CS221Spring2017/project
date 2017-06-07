@@ -68,22 +68,22 @@ int main(int argc , char *argv[])
     for (int j=0; j < loops; j++) {
         begin = rdtsc();
 
-        if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0){
-            perror("ERROR connecting");
-            end= begin;
+        //if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0){
+        //    perror("ERROR connecting");
+        //    end= begin;
 
-        }
-        else{
+        //}
+        //else{
             send(sockfd, &buffer, 64, 0);
             int n=recv(sockfd, &buffer, 4, 0);
-            if(n!=0){
+            if(n>0){
                 end = rdtsc();
                 counter++;
             }
             else{
                 end=begin;
             }
-        }
+        //}
         
         total += (end - begin);
     }
