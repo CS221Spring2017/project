@@ -13,7 +13,7 @@ static inline unsigned long long rdtsc(void) {
     __asm__ __volatile__("xor %%eax, %%eax;" "cpuid;" "rdtsc;": "=a" (lo), "=d" (hi));
     return (((unsigned long long)hi << 32) | (unsigned long long)lo);
 }
-#define loops 1
+#define loops 100
 
 int main(int argc , char *argv[])
 {      
@@ -21,7 +21,7 @@ int main(int argc , char *argv[])
     struct sockaddr_in serv_addr;
     struct hostent *server;
 
-    char buffer[256];
+    
     if (argc < 3) {
        fprintf(stderr,"usage %s hostname port\n", argv[0]);
        exit(0);
@@ -55,12 +55,13 @@ int main(int argc , char *argv[])
     //calcaulate round time
     unsigned long long begin,end;
     unsigned long long total = 0;
-    char msg = '0123456789012345678901234567890101234567890123456789012345678901';
+    char buffer[64];
+    bzero(buffer,64);
 
     for (int j=0; j < loops; j++) {
         begin = rdtsc();
-        send(sockfd, &msg, 64, 0);
-        recv(sockfd, &msg, 1, 0);
+        send(sockfd, &buffer, 64, 0);
+        recv(sockfd, &buffer, 64, 0);
         end = rdtsc();
         total += (end - begin);
     }

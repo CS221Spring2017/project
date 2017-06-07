@@ -12,7 +12,7 @@ static inline unsigned long long rdtsc(void) {
     __asm__ __volatile__("xor %%eax, %%eax;" "cpuid;" "rdtsc;": "=a" (lo), "=d" (hi));
     return (((unsigned long long)hi << 32) | (unsigned long long)lo);
 }
-#define loops 1
+#define loops 100
 
 int main(int argc , char *argv[])
 {
@@ -44,7 +44,7 @@ int main(int argc , char *argv[])
     listen(sockfd,5);
     clilen = sizeof(cli_addr);
 
-    char msg;
+    char buffer[64];
 
     while(1)
     {
@@ -58,8 +58,8 @@ int main(int argc , char *argv[])
         }
 
         for (int i=0; i < loops; i++) {
-            recv(newsockfd, &msg, 1, 0);
-            send(newsockfd, &msg, 1, 0);
+            recv(newsockfd, &buffer, 64, 0);
+            send(newsockfd, &buffer, 64, 0);
         }
     }
 
