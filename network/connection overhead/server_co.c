@@ -45,9 +45,6 @@ int main(int argc , char *argv[])
     listen(sockfd,5);
     clilen = sizeof(cli_addr);
 
-    char *msg=(char*)malloc(size+1);
-    memset (msg, 80, size+1);
-
     while(1)
     {
         newsockfd = accept(sockfd, 
@@ -61,14 +58,14 @@ int main(int argc , char *argv[])
         unsigned long long begin,end;
         unsigned long long diff=0;
 
-        start = rdtsc();
+        begin = rdtsc();
         close(newsockfd);
         
         end = rdtsc();
 
-        diff = end - start;
+        diff = end - begin;
         
-        printf("connection trea down cycle : %llu \n", diff);
+        printf("connection tear down cycle = %llu \n", diff);
         
     }
     close(sockfd);
