@@ -13,7 +13,7 @@ static inline unsigned long long rdtsc(void) {
     __asm__ __volatile__("xor %%eax, %%eax;" "cpuid;" "rdtsc;": "=a" (lo), "=d" (hi));
     return (((unsigned long long)hi << 32) | (unsigned long long)lo);
 }
-#define loops 100
+#define loops 5
 
 int main(int argc , char *argv[])
 {      
@@ -21,7 +21,6 @@ int main(int argc , char *argv[])
     struct sockaddr_in serv_addr;
     struct hostent *server;
 
-    
     if (argc < 3) {
        fprintf(stderr,"usage %s hostname port\n", argv[0]);
        exit(0);
@@ -37,6 +36,13 @@ int main(int argc , char *argv[])
     }
 
     server = gethostbyname(argv[1]);
+
+    //serv_addr.sin_addr.s_addr=(u_long)server ->h_addr;
+    //printf("%s\n", inet_ntoa(serv_addr.sin_addr));
+
+    //printf("server:%s\n",server);
+    //printf("port:%d\n",port );
+
     if (server == NULL) {
         fprintf(stderr,"ERROR, no such host\n");
         exit(0);
@@ -57,16 +63,24 @@ int main(int argc , char *argv[])
     unsigned long long total = 0;
     char buffer[64];
     bzero(buffer,64);
+    int counter=0;
 
     for (int j=0; j < loops; j++) {
         begin = rdtsc();
         send(sockfd, &buffer, 64, 0);
-        recv(sockfd, &buffer, 64, 0);
-        end = rdtsc();
+        int n=recv(sockfd, &buffer, 4, 0);
+        if(n!=0){
+            end = rdtsc();
+            counter++;
+        }
+        else{
+            end=begin;
+        }
+        
         total += (end - begin);
     }
 
-    printf ("Round Trip Cycles = %llu\n", total/loops);
+    printf ("Round Trip Cycles = %f\n", (total* 1.0*0.34/(counter*1e6)));
     
     return 0;
 

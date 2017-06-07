@@ -12,7 +12,7 @@ static inline unsigned long long rdtsc(void) {
     __asm__ __volatile__("xor %%eax, %%eax;" "cpuid;" "rdtsc;": "=a" (lo), "=d" (hi));
     return (((unsigned long long)hi << 32) | (unsigned long long)lo);
 }
-#define loops 100
+#define loops 5
 
 int main(int argc , char *argv[])
 {
@@ -58,8 +58,10 @@ int main(int argc , char *argv[])
         }
 
         for (int i=0; i < loops; i++) {
-            recv(newsockfd, &buffer, 64, 0);
-            send(newsockfd, &buffer, 64, 0);
+            int n=recv(newsockfd, &buffer, 64, 0);
+            if (n!=0){
+                send(newsockfd, &buffer, 4, 0);
+            }
         }
     }
 
