@@ -13,7 +13,7 @@ static inline unsigned long long rdtsc(void) {
     __asm__ __volatile__("xor %%eax, %%eax;" "cpuid;" "rdtsc;": "=a" (lo), "=d" (hi));
     return (((unsigned long long)hi << 32) | (unsigned long long)lo);
 }
-#define loops 5
+#define loops 100
 
 int main(int argc , char *argv[])
 {      
@@ -55,17 +55,18 @@ int main(int argc , char *argv[])
          (char *)&serv_addr.sin_addr.s_addr,
          server->h_length);
     serv_addr.sin_port = htons(port);
-    //if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0) 
-    //   perror("ERROR connecting");
+    if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0) 
+       perror("ERROR connecting");
 
     //calcaulate round time
     unsigned long long begin,end;
     unsigned long long total = 0;
-    char buffer[64];
-    bzero(buffer,64);
+    char buffer[32];
+    memset(buffer,'$',32);
     int counter=0;
 
     for (int j=0; j < loops; j++) {
+        int n=0;
         begin = rdtsc();
 
         //if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0){
@@ -74,20 +75,22 @@ int main(int argc , char *argv[])
 
         //}
         //else{
-            send(sockfd, &buffer, 64, 0);
-            int n=recv(sockfd, &buffer, 4, 0);
-            if(n>0){
-                end = rdtsc();
-                counter++;
-            }
-            else{
-                end=begin;
-            }
+        send(sockfd, &buffer, 32, 0);
+        n=recv(sockfd, &buffer, 32, 0);
+        if(n==32){
+            end = rdtsc();
+            counter++;
+        }
+        else{
+            end=begin;
+        }
         //}
         
         total += (end - begin);
+        printf("%d\n", total);
     }
 
+    printf ("Round Trip Cycles = %f\n", (total* 1.0/counter));
     printf ("Round Trip Cycles = %f\n", (total* 1.0*0.34/(counter*1e6)));
     
     return 0;
