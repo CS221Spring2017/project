@@ -24,15 +24,29 @@ int main(int argc, char* argv[])
 		exit(0);
 	}
 	//This is a signed integer type used to represent file sizes. 
-	FILE_SIZE = atoll(argv[1]);
+	FILE_SIZE = atoi(argv[1]);
 	const char type = *argv[2];
 	if(type == 'G')	
 		FILE_SIZE = FILE_SIZE * 1024 * 1024 * 1024;
 	if(type == 'M')
 		FILE_SIZE = FILE_SIZE * 1024 * 1024;
-	double result_random  = random_access(argv[3]);
-	double result_sequence = sequence_access(argv[3]);
-	printf("random access cycle = %.2f, sequence access cycle = %.2f\n", result_random, result_sequence);
+	int number=atoi(argv[3]);
+	char *addr="/Volumes/share/cache";
+
+	if (number==1){
+		double result_random  = random_access(addr);
+		printf("random access cycle = %.2f\n", result_random);
+
+	}
+	else{
+		double result_sequence = sequence_access(addr);
+		printf("sequence access cycle = %.2f\n",result_sequence);
+
+	}
+
+	//double result_random  = random_access(argv[3]);
+	//double result_sequence = sequence_access(argv[3]);
+	//printf("random access cycle = %.2f, sequence access cycle = %.2f\n", result_random, result_sequence);
 	return 0;
 }
 
