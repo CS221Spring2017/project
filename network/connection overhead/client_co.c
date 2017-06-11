@@ -68,7 +68,7 @@ int main(int argc , char *argv[])
     close(sockfd);
 
     printf ("connection set up cycles=: %llu\n", diff);
-    printf ("connection set up time(ms)=: %llu\n", (diff* 1.0*0.34/(counter*1e6)));
+    printf ("connection set up time(ms)=: %llu\n", (diff* 1.0*0.34/(loops*1e6)));
     
     return 0;
 
