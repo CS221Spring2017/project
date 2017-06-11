@@ -13,7 +13,7 @@ static inline unsigned long long rdtsc(void) {
     __asm__ __volatile__("xor %%eax, %%eax;" "cpuid;" "rdtsc;": "=a" (lo), "=d" (hi));
     return (((unsigned long long)hi << 32) | (unsigned long long)lo);
 }
-#define loops 1000
+#define loops 100
 
 int main(int argc , char *argv[])
 {      
@@ -67,7 +67,8 @@ int main(int argc , char *argv[])
 
     close(sockfd);
 
-    printf ("connection set up cycle=: %llu\n", diff);
+    printf ("connection set up cycles=: %llu\n", diff);
+    printf ("connection set up time(ms)=: %llu\n", (diff* 1.0*0.34/(counter*1e6)));
     
     return 0;
 

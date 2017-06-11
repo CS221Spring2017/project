@@ -92,7 +92,7 @@ int main(int argc , char *argv[])
     }
 
     printf ("Round Trip Cycles = %f\n", (total* 1.0/counter));
-    printf ("Round Trip Cycles = %f\n", (total* 1.0*0.34/(counter*1e6)));
+    printf ("Round Trip Time = %f\n", (total* 1.0*0.34/(counter*1e6)));
     
     return 0;
 

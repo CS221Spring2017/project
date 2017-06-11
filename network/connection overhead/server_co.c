@@ -12,7 +12,7 @@ static inline unsigned long long rdtsc(void) {
     __asm__ __volatile__("xor %%eax, %%eax;" "cpuid;" "rdtsc;": "=a" (lo), "=d" (hi));
     return (((unsigned long long)hi << 32) | (unsigned long long)lo);
 }
-#define loops 1000
+#define loops 100
 
 int main(int argc , char *argv[])
 {
@@ -65,7 +65,8 @@ int main(int argc , char *argv[])
 
         diff = end - begin;
         
-        printf("connection tear down cycle = %llu \n", diff);
+        printf("connection tear down cycles = %llu \n", diff);
+        printf("connection tear down times = %llu \n", (diff* 1.0*0.34/(counter*1e6)));
         
     }
     close(sockfd);
