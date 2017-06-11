@@ -15,9 +15,11 @@ static inline unsigned long long rdtsc(void) {
 off_t BLOCK_SIZE = 4 * 1024;
 off_t FILE_SIZE  = 64 * 1024 * 1024;
 
-void sequence_access(char* filename)
+void sequence_access(char* filename, int n)
 {
+
 	int file = open(filename, O_RDONLY);
+	
 	
 	if(fcntl(file, F_NOCACHE, 1) == -1)
     	printf("Disable Cache Failed.\n");
@@ -36,11 +38,10 @@ void sequence_access(char* filename)
     }
     close(file);
     free(buffer);
-    printf("sequence total=%f \n", total*1.0*0.34/1e3/N);
-    //return (total*1.0/N);
+    printf("%d sequential = %f us\n", n, total*1.0*0.34/1e3/N);
 }
 
-void random_access(char* filename)
+void random_access(char* filename, int n)
 {
 	int file = open(filename, O_RDONLY);
 	
@@ -67,17 +68,18 @@ void random_access(char* filename)
 	free(buffer);
 	close(file);
 
-	printf("random total=%f \n", total*1.0*0.34/1e3/N);
-	//return total*1.0/N;
+	printf("%d random =%f us\n", total*1.0*0.34/1e3/N);
 }
 
 
 int main(int argc, const char* argv[])
 {
-	if(argc < 2){
-		printf("usage ./program argument. argument ranges from [0, 14]\n");
+	if(argc < 3){
+		printf("usage ./program argument 1. argument ranges from [0, 14], 1=random access, 0=sequential access\n");
 	}
 	int n = atoi(argv[1]);
+	int rand = atoi(argv[2]);
+
 	char* filename[16];
 	filename[0] = "data/file0";
 	filename[1] = "data/file1";
@@ -110,23 +112,16 @@ int main(int argc, const char* argv[])
 		else if(child[i] == 0)
 		{
 			//child process
-			printf("child process %d\n", i);
-			//random_access(filename[i]);
-			sequence_access(filename[i]);
+			//printf("child process %d\n", i);
+			if(rand == 1)
+				random_access(filename[i], n);
+			else
+				sequence_access(filename[i], n);
 			exit(1);
 		}else{
 			//parent process
 			//wait(NULL);
 		}
 	}
-	/*
-	double sum = 0;
-	for(int j = 0; j < n; j++)
-	{
-		printf("time = %f\n", time[i]/(n*1.0));
-		sum = sum + time[i];
-	}
-	printf("time = %f\n", sum/(n*1.0));
-	*/
 	return 0;
 }
