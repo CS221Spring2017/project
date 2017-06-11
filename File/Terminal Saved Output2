@@ -1,0 +1,324 @@
+s-MacBook-Pro-4:~ Manlin$ cd Desktop/
+s-MacBook-Pro-4:Desktop Manlin$ cd CSE221_project/File/
+s-MacBook-Pro-4:File Manlin$ ls
+Terminal Saved Output	contention_read.c	ram.o
+cache_size.c		file.out		random.sh
+cont.o			file_generate.py	seq.o
+cont.out		file_read.c		seq.sh
+s-MacBook-Pro-4:File Manlin$ sudo purge
+Password:
+s-MacBook-Pro-4:File Manlin$ ./cont.o 10 0
+Disable Cache Failed.
+Disable Cache Failed.
+Disable Cache Failed.
+Disable Cache Failed.
+10 sequential = 0.442079 us
+10 sequential = 0.429515 us
+Disable Cache Failed.
+10 sequential = 0.488528 us
+Disable Cache Failed.
+Disable Cache Failed.
+10 sequential = 0.375762 us
+Disable Cache Failed.
+10 sequential = 0.339408 us
+10 sequential = 0.339251 us
+10 sequential = 0.329069 us
+Disable Cache Failed.
+Disable Cache Failed.
+10 sequential = 0.335676 us
+s-MacBook-Pro-4:File Manlin$ 10 sequential = 0.277695 us
+10 sequential = 0.308969 us
+mkdir data
+s-MacBook-Pro-4:File Manlin$ python file_generate.py 
+s-MacBook-Pro-4:File Manlin$ sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 10 0
+s-MacBook-Pro-4:File Manlin$ 10 sequential = 92.425614 us
+10 sequential = 92.479233 us
+10 sequential = 92.769429 us
+10 sequential = 92.710829 us
+10 sequential = 92.916303 us
+10 sequential = 93.473535 us
+10 sequential = 93.975627 us
+10 sequential = 93.972032 us
+10 sequential = 96.269685 us
+10 sequential = 96.352913 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 11 0
+s-MacBook-Pro-4:File Manlin$ 11 sequential = 95.920996 us
+11 sequential = 96.055190 us
+11 sequential = 96.733835 us
+11 sequential = 97.141922 us
+11 sequential = 97.235764 us
+11 sequential = 97.363599 us
+11 sequential = 97.741767 us
+11 sequential = 98.136632 us
+11 sequential = 98.695178 us
+11 sequential = 98.860473 us
+11 sequential = 100.283427 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 9 0
+s-MacBook-Pro-4:File Manlin$ 9 sequential = 77.131223 us
+9 sequential = 77.523980 us
+9 sequential = 77.821534 us
+9 sequential = 77.870114 us
+9 sequential = 77.864036 us
+9 sequential = 77.982509 us
+9 sequential = 78.100990 us
+9 sequential = 83.879983 us
+9 sequential = 83.855861 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 12 0
+s-MacBook-Pro-4:File Manlin$ 12 sequential = 105.268259 us
+12 sequential = 105.552705 us
+12 sequential = 105.621576 us
+12 sequential = 105.625573 us
+12 sequential = 105.816868 us
+12 sequential = 106.119564 us
+12 sequential = 106.187648 us
+12 sequential = 106.699009 us
+12 sequential = 107.076867 us
+12 sequential = 107.978171 us
+12 sequential = 108.221819 us
+12 sequential = 109.056578 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 13 0
+s-MacBook-Pro-4:File Manlin$ 13 sequential = 115.692495 us
+13 sequential = 115.831178 us
+13 sequential = 117.150236 us
+13 sequential = 117.019654 us
+13 sequential = 117.172264 us
+13 sequential = 122.283144 us
+13 sequential = 122.189013 us
+13 sequential = 123.311906 us
+13 sequential = 123.330485 us
+13 sequential = 124.022909 us
+13 sequential = 124.209302 us
+13 sequential = 122.833174 us
+13 sequential = 125.441104 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 14 0
+s-MacBook-Pro-4:File Manlin$ 14 sequential = 124.870002 us
+14 sequential = 126.789133 us
+14 sequential = 126.895246 us
+14 sequential = 126.243206 us
+14 sequential = 127.192189 us
+14 sequential = 127.964383 us
+14 sequential = 128.891580 us
+14 sequential = 129.078668 us
+14 sequential = 129.055133 us
+14 sequential = 129.776288 us
+14 sequential = 130.237383 us
+14 sequential = 130.438754 us
+14 sequential = 130.469035 us
+14 sequential = 130.662482 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 10 1
+s-MacBook-Pro-4:File Manlin$ 10 random =140.421684 us
+10 random =140.563018 us
+10 random =140.733253 us
+10 random =141.098877 us
+10 random =141.343805 us
+10 random =141.422786 us
+10 random =142.142964 us
+10 random =142.223987 us
+10 random =142.463908 us
+10 random =142.549079 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 11 1
+s-MacBook-Pro-4:File Manlin$ 11 random =152.206728 us
+11 random =152.672002 us
+11 random =152.741210 us
+11 random =152.902986 us
+11 random =152.897688 us
+11 random =153.018794 us
+11 random =153.022811 us
+11 random =153.277136 us
+11 random =153.014791 us
+11 random =153.225600 us
+11 random =153.653810 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 9 1
+s-MacBook-Pro-4:File Manlin$ 9 random =129.889516 us
+9 random =130.082175 us
+9 random =130.186447 us
+9 random =130.536149 us
+9 random =130.548558 us
+9 random =131.079610 us
+9 random =131.464692 us
+9 random =131.536209 us
+9 random =131.686086 us
+./cont.o 9 1
+s-MacBook-Pro-4:File Manlin$ 9 random =128.524649 us
+9 random =128.845888 us
+9 random =129.149994 us
+9 random =129.416019 us
+9 random =129.549926 us
+9 random =129.491830 us
+9 random =129.424313 us
+9 random =129.569513 us
+9 random =129.773583 us
+./cont.o 9 1
+s-MacBook-Pro-4:File Manlin$ 9 random =136.566893 us
+9 random =137.241720 us
+9 random =137.250493 us
+9 random =137.388968 us
+9 random =137.933145 us
+9 random =137.998531 us
+9 random =137.841600 us
+9 random =138.146298 us
+9 random =138.072289 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 12 1
+s-MacBook-Pro-4:File Manlin$ 12 random =155.366797 us
+12 random =155.633973 us
+12 random =156.067223 us
+12 random =156.144582 us
+12 random =157.613667 us
+12 random =157.526934 us
+12 random =157.667036 us
+12 random =157.680051 us
+12 random =157.874916 us
+12 random =158.124565 us
+12 random =158.351541 us
+12 random =158.437206 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 7 1
+s-MacBook-Pro-4:File Manlin$ 7 random =121.309404 us
+7 random =121.418155 us
+7 random =121.510990 us
+7 random =121.992949 us
+7 random =122.114670 us
+7 random =122.241598 us
+7 random =122.234883 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 8 1
+s-MacBook-Pro-4:File Manlin$ 8 random =124.690591 us
+8 random =124.699138 us
+8 random =124.767156 us
+8 random =124.895425 us
+8 random =125.673073 us
+8 random =125.719664 us
+8 random =125.731063 us
+8 random =125.861736 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 7 1
+s-MacBook-Pro-4:File Manlin$ 7 random =121.850574 us
+7 random =121.978077 us
+7 random =122.021618 us
+7 random =122.153240 us
+7 random =122.157820 us
+7 random =122.152404 us
+7 random =122.261408 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 6 1
+s-MacBook-Pro-4:File Manlin$ 6 random =127.133870 us
+6 random =127.253698 us
+6 random =127.563460 us
+6 random =127.491079 us
+6 random =127.593163 us
+6 random =128.333218 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 6 1
+s-MacBook-Pro-4:File Manlin$ 6 random =126.561935 us
+6 random =126.544099 us
+6 random =126.710414 us
+6 random =126.880346 us
+6 random =126.873704 us
+6 random =127.552960 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 5 1
+s-MacBook-Pro-4:File Manlin$ 5 random =111.343894 us
+5 random =111.639602 us
+5 random =112.101814 us
+5 random =112.336281 us
+5 random =112.646459 us
+purge
+Unable to purge disk buffers: Operation not permitted
+s-MacBook-Pro-4:File Manlin$ sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 5 1
+s-MacBook-Pro-4:File Manlin$ 5 random =110.753229 us
+5 random =111.080336 us
+5 random =111.422947 us
+5 random =111.732601 us
+5 random =111.944674 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 6 1
+s-MacBook-Pro-4:File Manlin$ 6 random =117.242392 us
+6 random =117.424531 us
+6 random =117.496526 us
+6 random =117.832455 us
+6 random =118.088806 us
+6 random =118.212406 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 6 1
+s-MacBook-Pro-4:File Manlin$ 6 random =114.173413 us
+6 random =114.575601 us
+6 random =114.834166 us
+6 random =114.828397 us
+6 random =114.846629 us
+6 random =115.033085 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 4 1
+s-MacBook-Pro-4:File Manlin$ 4 random =110.726882 us
+4 random =110.882422 us
+4 random =110.874868 us
+4 random =111.023286 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 7 1
+s-MacBook-Pro-4:File Manlin$ 7 random =128.335384 us
+7 random =128.314101 us
+7 random =128.948110 us
+7 random =128.913023 us
+7 random =129.022162 us
+7 random =129.140611 us
+7 random =129.144766 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 12 1
+s-MacBook-Pro-4:File Manlin$ 12 random =165.397067 us
+12 random =165.397605 us
+12 random =165.444708 us
+12 random =165.331664 us
+12 random =165.650513 us
+12 random =165.721354 us
+12 random =165.793557 us
+12 random =167.187259 us
+12 random =167.644312 us
+12 random =167.837132 us
+12 random =168.191360 us
+12 random =168.147263 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 13 1
+s-MacBook-Pro-4:File Manlin$ 13 random =174.200883 us
+13 random =176.354754 us
+13 random =178.146047 us
+13 random =178.713796 us
+13 random =178.865444 us
+13 random =178.759743 us
+13 random =178.926640 us
+13 random =179.102751 us
+13 random =179.089653 us
+13 random =179.097955 us
+13 random =179.448074 us
+13 random =179.470291 us
+13 random =179.532425 us
+sudo purge
+s-MacBook-Pro-4:File Manlin$ ./cont.o 13 0
+s-MacBook-Pro-4:File Manlin$ 13 sequential = 110.484606 us
+13 sequential = 110.662534 us
+13 sequential = 110.862145 us
+13 sequential = 111.502820 us
+13 sequential = 115.432722 us
+13 sequential = 118.064818 us
+13 sequential = 121.052130 us
+13 sequential = 122.121805 us
+13 sequential = 122.089905 us
+13 sequential = 122.849481 us
+13 sequential = 122.318183 us
+13 sequential = 122.910875 us
+13 sequential = 123.498311 us
+
