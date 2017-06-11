@@ -44,7 +44,7 @@ int main(int argc , char *argv[])
     listen(sockfd,5);
     clilen = sizeof(cli_addr);
 
-    char buffer[32];
+    char buffer[64];
 
     while(1)
     {
@@ -58,9 +58,9 @@ int main(int argc , char *argv[])
         }
 
         for (int i=0; i < loops; i++) {
-            int n=recv(newsockfd, &buffer, 32, 0);
-            if (n==32){
-                send(newsockfd, &buffer, 32, 0);
+            int n=recv(newsockfd, &buffer, 64, 0);
+            if (n==64){
+                send(newsockfd, &buffer, 4, 0);
             }
         }
     }

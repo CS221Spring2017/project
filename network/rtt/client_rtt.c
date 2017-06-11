@@ -61,8 +61,8 @@ int main(int argc , char *argv[])
     //calcaulate round time
     unsigned long long begin,end;
     unsigned long long total = 0;
-    char buffer[32];
-    memset(buffer,'$',32);
+    char buffer[64];
+    memset(buffer,'$',64);
     int counter=0;
 
     for (int j=0; j < loops; j++) {
@@ -75,9 +75,9 @@ int main(int argc , char *argv[])
 
         //}
         //else{
-        send(sockfd, &buffer, 32, 0);
-        n=recv(sockfd, &buffer, 32, 0);
-        if(n==32){
+        send(sockfd, &buffer, 64, 0);
+        n=recv(sockfd, &buffer, 4, 0);
+        if(n==4){
             end = rdtsc();
             counter++;
         }
