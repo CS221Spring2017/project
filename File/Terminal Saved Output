@@ -1,0 +1,1515 @@
+s-MacBook-Pro-3:~ Manlin$ cd Desktop/CSE221_project/File/
+s-MacBook-Pro-3:File Manlin$ ls
+cache_size.c		file.out		file_read.c
+contention_read.c	file_generate.py
+s-MacBook-Pro-3:File Manlin$ python file_generate.py 
+Traceback (most recent call last):
+  File "file_generate.py", line 21, in <module>
+    fp = open("data/file%d" % x, 'w+b')
+IOError: [Errno 2] No such file or directory: 'data/file0'
+s-MacBook-Pro-3:File Manlin$ mkdir data
+s-MacBook-Pro-3:File Manlin$ python file_generate.py 
+s-MacBook-Pro-3:File Manlin$ gcc -o cont.out contention_read.c 
+s-MacBook-Pro-3:File Manlin$ gcc -o cont.out contention_read.c 
+s-MacBook-Pro-3:File Manlin$ ./count.out 1
+-bash: ./count.out: No such file or directory
+s-MacBook-Pro-3:File Manlin$ ls
+cache_size.c		data			file_read.c
+cont.out		file.out
+contention_read.c	file_generate.py
+s-MacBook-Pro-3:File Manlin$ ./cont.out 1
+child process 0
+s-MacBook-Pro-3:File Manlin$ random total=8590046497.516113 
+./cont.out 2
+child process 0
+child process 1
+s-MacBook-Pro-3:File Manlin$ random total=8590028778.058899 
+random total=8590070901.001831 
+gcc -o cont.out contention_read.c 
+contention_read.c:39:23: error: use of undeclared identifier 'n'
+    return (total*1.0/n);
+                      ^
+1 error generated.
+s-MacBook-Pro-3:File Manlin$ gcc -o cont.out contention_read.c 
+s-MacBook-Pro-3:File Manlin$ ./cont.out 2
+child process 0
+sequence total=178383.988342 
+child process 1
+sequence total=85504.449768 
+time = 0.000000
+s-MacBook-Pro-3:File Manlin$ gcc -o cont.out contention_read.c 
+s-MacBook-Pro-3:File Manlin$ ./cont.out 2
+child process 0
+sequence total=154206.000793 
+child process 1
+sequence total=130895.653748 
+time = 0.000000
+s-MacBook-Pro-3:File Manlin$ gcc -o cont.out contention_read.c 
+contention_read.c:73:14: error: expected identifier
+memset(time, 0, 16);
+             ^
+contention_read.c:73:1: warning: type specifier missing, defaults to 'int'
+      [-Wimplicit-int]
+memset(time, 0, 16);
+^
+contention_read.c:73:1: warning: incompatible redeclaration of library function
+      'memset' [-Wincompatible-library-redeclaration]
+contention_read.c:73:1: note: 'memset' is a builtin with type 'void *(void *,
+      int, unsigned long)'
+2 warnings and 1 error generated.
+s-MacBook-Pro-3:File Manlin$ gcc -o cont.out contention_read.c 
+contention_read.c:73:14: error: expected identifier
+memset(time, 0.0, 16);
+             ^
+contention_read.c:73:1: warning: type specifier missing, defaults to 'int'
+      [-Wimplicit-int]
+memset(time, 0.0, 16);
+^
+contention_read.c:73:1: warning: incompatible redeclaration of library function
+      'memset' [-Wincompatible-library-redeclaration]
+contention_read.c:73:1: note: 'memset' is a builtin with type 'void *(void *,
+      int, unsigned long)'
+2 warnings and 1 error generated.
+s-MacBook-Pro-3:File Manlin$ gcc -o cont.out contention_read.c 
+contention_read.c:74:14: error: expected identifier
+memset(time, 0.0, 16);
+             ^
+contention_read.c:74:1: warning: type specifier missing, defaults to 'int'
+      [-Wimplicit-int]
+memset(time, 0.0, 16);
+^
+/usr/include/secure/_string.h:77:3: note: expanded from macro 'memset'
+  __builtin___memset_chk (dest, val, len, __darwin_obsz0 (dest))
+  ^
+contention_read.c:74:1: error: conflicting types for '__builtin___memset_chk'
+/usr/include/secure/_string.h:77:3: note: expanded from macro 'memset'
+  __builtin___memset_chk (dest, val, len, __darwin_obsz0 (dest))
+  ^
+contention_read.c:74:1: note: '__builtin___memset_chk' is a builtin with type
+      'void *(void *, int, unsigned long, unsigned long)'
+/usr/include/secure/_string.h:77:3: note: expanded from macro 'memset'
+  __builtin___memset_chk (dest, val, len, __darwin_obsz0 (dest))
+  ^
+1 warning and 2 errors generated.
+s-MacBook-Pro-3:File Manlin$ gcc -Iinclude -o cont.out contention_read.c 
+contention_read.c:74:14: error: expected identifier
+memset(time, 0.0, 16);
+             ^
+contention_read.c:74:1: warning: type specifier missing, defaults to 'int'
+      [-Wimplicit-int]
+memset(time, 0.0, 16);
+^
+/usr/include/secure/_string.h:77:3: note: expanded from macro 'memset'
+  __builtin___memset_chk (dest, val, len, __darwin_obsz0 (dest))
+  ^
+contention_read.c:74:1: error: conflicting types for '__builtin___memset_chk'
+/usr/include/secure/_string.h:77:3: note: expanded from macro 'memset'
+  __builtin___memset_chk (dest, val, len, __darwin_obsz0 (dest))
+  ^
+contention_read.c:74:1: note: '__builtin___memset_chk' is a builtin with type
+      'void *(void *, int, unsigned long, unsigned long)'
+/usr/include/secure/_string.h:77:3: note: expanded from macro 'memset'
+  __builtin___memset_chk (dest, val, len, __darwin_obsz0 (dest))
+  ^
+1 warning and 2 errors generated.
+s-MacBook-Pro-3:File Manlin$ gcc -Iinclude -o cont.out contention_read.c 
+s-MacBook-Pro-3:File Manlin$ gcc -o cont.out contention_read.c 
+s-MacBook-Pro-3:File Manlin$ ./cont.out 2
+child process 0
+sequence total=147761.294983 
+child process 1
+sequence total=93467.697876 
+time = 0.000000
+s-MacBook-Pro-3:File Manlin$ ./cont.out 5
+child process 0
+sequence total=146771.958313 
+child process 1
+sequence total=92846.618774 
+child process 2
+sequence total=99001.651672 
+child process 3
+sequence total=104177.544617 
+child process 4
+sequence total=89724.642090 
+time = 0.000000
+s-MacBook-Pro-3:File Manlin$ gcc -o cont.out contention_read.c 
+s-MacBook-Pro-3:File Manlin$ ./cont.out 5
+child process 0
+child process 1
+child process 2
+child process 3
+time = 0.000000
+child process 4
+s-MacBook-Pro-3:File Manlin$ sequence total=523460.181824 
+sequence total=532648.831970 
+sequence total=548725.719116 
+sequence total=549787.478699 
+sequence total=566833.590698 
+./cont.out 5
+child process 0
+child process 1
+child process 2
+child process 3
+time = 0.000000
+child process 4
+s-MacBook-Pro-3:File Manlin$ sequence total=469304.923584 
+sequence total=488702.479797 
+sequence total=491457.717163 
+sequence total=494045.738403 
+sequence total=509527.292603 
+gcc -o cont.out contention_read.c 
+s-MacBook-Pro-3:File Manlin$ ./cont.out 5
+child process 0
+sequence total=105893.186768 
+child process 1
+sequence total=102633.290100 
+child process 2
+sequence total=108873.132629 
+child process 3
+sequence total=75329.721680 
+child process 4
+sequence total=102131.046997 
+time = 0.000000
+s-MacBook-Pro-3:File Manlin$ gcc -o cont.out contention_read.c 
+s-MacBook-Pro-3:File Manlin$ ./cont.out 5
+child process 0
+sequence total=110244.898315 
+child process 1
+sequence total=95783.653870 
+child process 2
+sequence total=83165.791443 
+child process 3
+sequence total=152954.713745 
+child process 4
+sequence total=127852.355835 
+time = 0.000000
+time = 0.000000
+time = 0.000000
+time = 0.000000
+time = 0.000000
+time = 0.000000
+s-MacBook-Pro-3:File Manlin$ gcc -o cont.out contention_read.c 
+s-MacBook-Pro-3:File Manlin$ ./cont.out 5
+child process 0
+child process 1
+child process 2
+child process 3
+time = 0.000000
+time = 0.000000
+time = 0.000000
+time = 0.000000
+time = 0.000000
+time = 0.000000
+child process 4
+s-MacBook-Pro-3:File Manlin$ sequence total=445351.139343 
+sequence total=470367.287170 
+sequence total=471719.899597 
+sequence total=482409.429810 
+sequence total=483667.218384 
+gcc -o cont.out contention_re./cont.out 6
+child process 0
+child process 1
+child process 2
+child process 3
+child process 4
+child process 5
+time = 0.000000
+time = 0.000000
+time = 0.000000
+time = 0.000000
+time = 0.000000
+time = 0.000000
+time = 0.000000
+s-MacBook-Pro-3:File Manlin$ sequence total=553922.634583 
+sequence total=567417.858948 
+sequence total=572084.730164 
+sequence total=578384.621948 
+sequence total=582187.131165 
+sequence total=583353.814148 
+./cont.out 10
+child process 0
+child process 1
+child process 2
+child process 3
+child process 4
+child process 5
+child process 6
+child process 7
+child process 8
+time = 0.000000
+time = 0.000000
+time = 0.000000
+time = 0.000000
+time = 0.000000
+time = 0.000000
+time = 0.000000
+time = 0.000000
+time = 0.000000
+time = 0.000000
+time = 0.000000
+child process 9
+s-MacBook-Pro-3:File Manlin$ sequence total=613276.295776 
+sequence total=617072.855225 
+sequence total=643457.663452 
+sequence total=648346.956360 
+sequence total=653975.885132 
+sequence total=664812.646667 
+sequence total=666522.894226 
+sequence total=664500.501282 
+sequence total=665911.121094 
+sequence total=673271.538086 
+gcc -o cont.out contention_read.c 
+s-MacBook-Pro-3:File Manlin$ ./cont.out 16
+child process 0
+child process 1
+child process 2
+child process 3
+child process 4
+child process 5
+child process 6
+child process 7
+child process 8
+child process 9
+child process 10
+child process 11
+child process 12
+child process 13
+child process 14
+child process 15
+s-MacBook-Pro-3:File Manlin$ sequence total=797280.813416 
+sequence total=805058.161255 
+sequence total=836082.691528 
+sequence total=849996.346008 
+sequence total=889031.289368 
+sequence total=905614.625854 
+sequence total=901928.987671 
+sequence total=920061.965271 
+sequence total=924097.858948 
+sequence total=934537.391357 
+sequence total=935504.018860 
+sequence total=942041.655762 
+sequence total=960541.378357 
+sequence total=960050.830627 
+sequence total=962234.285461 
+sequence total=970989.561340 
+gcc -o seq.o contention_read.c 
+s-MacBook-Pro-3:File Manlin$ gcc -o ram.o contention_read.c 
+s-MacBook-Pro-3:File Manlin$ ./seq.o 16
+child process 0
+child process 1
+child process 2
+child process 3
+child process 4
+child process 5
+child process 6
+child process 7
+child process 8
+child process 9
+child process 10
+child process 11
+child process 12
+child process 13
+child process 14
+child process 15
+s-MacBook-Pro-3:File Manlin$ sequence total=834843.933960 
+sequence total=842410.060608 
+sequence total=867432.809875 
+sequence total=866332.430481 
+sequence total=895076.014343 
+sequence total=896034.370117 
+sequence total=942152.724426 
+sequence total=946715.311523 
+sequence total=947506.943420 
+sequence total=949480.885376 
+sequence total=960825.109497 
+sequence total=975456.770874 
+sequence total=979461.439148 
+sequence total=979124.031189 
+sequence total=981587.059631 
+sequence total=983145.939636 
+./ram.o 16
+child process 0
+child process 1
+child process 2
+child process 3
+child process 4
+child process 5
+child process 6
+child process 7
+child process 8
+child process 9
+child process 10
+child process 11
+child process 12
+child process 13
+child process 14
+child process 15
+s-MacBook-Pro-3:File Manlin$ random total=8590717496.153442 
+random total=8590719181.574097 
+random total=8590723006.044739 
+random total=8590728352.087158 
+random total=8590730753.582031 
+random total=8590729914.287781 
+random total=8590730396.406677 
+random total=8590730094.084045 
+random total=8590732297.810730 
+random total=8590731749.268127 
+random total=8590731624.005371 
+random total=8590735022.244934 
+random total=8590738879.429016 
+random total=8590741190.144775 
+random total=8590742928.305786 
+random total=8590745364.872986 
+./ram.o 4
+child process 0
+child process 1
+child process 2
+child process 3
+s-MacBook-Pro-3:File Manlin$ random total=8590318821.255920 
+random total=8590330844.633606 
+random total=8590339744.265320 
+random total=8590341198.683777 
+gcc -o ram.o contention_read.c 
+s-MacBook-Pro-3:File Manlin$ ./ram.o 4
+child process 0
+child process 1
+child process 2
+child process 3
+s-MacBook-Pro-3:File Manlin$ random total=383594.860779 
+random total=384593.074951 
+random total=388773.486816 
+random total=396655.231323 
+./ram.o 16
+child process 0
+child process 1
+child process 2
+child process 3
+child process 4
+child process 5
+child process 6
+child process 7
+child process 8
+child process 9
+child process 10
+child process 11
+child process 12
+child process 13
+child process 14
+child process 15
+s-MacBook-Pro-3:File Manlin$ random total=987284.422546 
+random total=988832.402527 
+random total=993787.209229 
+random total=998625.929260 
+random total=1002527.850037 
+random total=1005612.663147 
+random total=1006213.472290 
+random total=1015011.655884 
+random total=1017813.576843 
+random total=1016707.729126 
+random total=1019872.739624 
+random total=1025108.092651 
+random total=1030062.127258 
+random total=1040611.442322 
+random total=1042849.388306 
+random total=1042387.451416 
+gcc -o ram.o contention_read.gcc -o ram.o contention_read.c 
+s-MacBook-Pro-3:File Manlin$ gcc -o ram.o contention_read.c 
+s-MacBook-Pro-3:File Manlin$ ./ram.o 10
+child process 0
+child process 1
+child process 2
+child process 3
+child process 4
+child process 5
+child process 6
+child process 7
+child process 8
+child process 9
+s-MacBook-Pro-3:File Manlin$ random total=1891862508.975758 
+random total=1940399142.815085 
+random total=1935223986.995921 
+random total=1943081017.348346 
+random total=1992318790.031882 
+random total=2020019677.554860 
+random total=2070370138.370289 
+random total=2081123492.072610 
+random total=2105505240.765740 
+random total=2135185153.018727 
+gcc -o ram.o contention_read.c 
+s-MacBook-Pro-3:File Manlin$ ./ram.o 5
+child process 0
+child process 1
+child process 2
+child process 3
+child process 4
+s-MacBook-Pro-3:File Manlin$ random total=227.231695 
+random total=227.310149 
+random total=227.689369 
+random total=227.905895 
+random total=228.521356 
+./ram.o 5
+child process 0
+child process 1
+child process 2
+child process 3
+child process 4
+s-MacBook-Pro-3:File Manlin$ random total=236.693754 
+random total=237.266230 
+random total=237.302843 
+random total=237.710544 
+random total=237.882752 
+./ram.o 10
+child process 0
+child process 1
+child process 2
+child process 3
+child process 4
+child process 5
+child process 6
+child process 7
+child process 8
+child process 9
+s-MacBook-Pro-3:File Manlin$ random total=213.862526 
+random total=220.338253 
+random total=220.849636 
+random total=221.534138 
+random total=222.092475 
+random total=222.962306 
+random total=223.909329 
+random total=224.980158 
+random total=230.306594 
+random total=230.497249 
+./ram.o 16
+child process 0
+child process 1
+child process 2
+child process 3
+child process 4
+child process 5
+child process 6
+child process 7
+child process 8
+child process 9
+child process 10
+child process 11
+child process 12
+child process 13
+child process 14
+child process 15
+s-MacBook-Pro-3:File Manlin$ random total=316.276601 
+random total=318.698043 
+random total=318.387796 
+random total=320.803432 
+random total=320.916242 
+random total=322.297827 
+random total=327.638749 
+random total=329.346830 
+random total=330.721405 
+random total=333.027823 
+random total=335.347300 
+random total=336.817643 
+random total=340.528615 
+random total=340.375024 
+random total=341.169332 
+random total=344.701720 
+gcc -o seq.o cont
+cont.out           contention_read.c  
+s-MacBook-Pro-3:File Manlin$ gcc -o seq.o contention_read.c 
+s-MacBook-Pro-3:File Manlin$ ./seq.o 16
+child process 0
+child process 1
+child process 2
+child process 3
+child process 4
+child process 5
+child process 6
+child process 7
+child process 8
+child process 9
+child process 10
+child process 11
+child process 12
+child process 13
+child process 14
+child process 15
+s-MacBook-Pro-3:File Manlin$ sequence total=228.477870 
+sequence total=227.884779 
+sequence total=279.058922 
+sequence total=284.136119 
+sequence total=289.015668 
+sequence total=298.884024 
+sequence total=299.949388 
+sequence total=304.285102 
+sequence total=306.852465 
+sequence total=309.281108 
+sequence total=307.765627 
+sequence total=308.282331 
+sequence total=310.642300 
+sequence total=314.008961 
+sequence total=314.324939 
+sequence total=316.611256 
+./seq.o 16
+child process 0
+child process 1
+child process 2
+child process 3
+child process 4
+child process 5
+child process 6
+child process 7
+child process 8
+child process 9
+child process 10
+child process 11
+child process 12
+child process 13
+child process 14
+child process 15
+s-MacBook-Pro-3:File Manlin$ sequence total=270.111795 
+sequence total=271.488999 
+sequence total=284.524536 
+sequence total=294.767612 
+sequence total=295.654241 
+sequence total=305.901507 
+sequence total=309.185608 
+sequence total=311.224198 
+sequence total=310.674399 
+sequence total=314.833302 
+sequence total=315.959562 
+sequence total=316.349288 
+sequence total=316.677413 
+sequence total=318.064956 
+sequence total=318.216712 
+sequence total=319.819085 
+./seq.o 1
+child process 0
+s-MacBook-Pro-3:File Manlin$ sequence total=33.528664 
+./seq.o 1
+child process 0
+s-MacBook-Pro-3:File Manlin$ sequence total=32.399121 
+./seq.o 1
+child process 0
+s-MacBook-Pro-3:File Manlin$ sequence total=40.915643 
+./seq.o 1
+child process 0
+s-MacBook-Pro-3:File Manlin$ sequence total=42.967171 
+./seq.o 1
+child process 0
+s-MacBook-Pro-3:File Manlin$ sequence total=36.529409 
+./seq.o 1
+child process 0
+s-MacBook-Pro-3:File Manlin$ sequence total=45.686175 
+./seq.o 1
+child process 0
+s-MacBook-Pro-3:File Manlin$ sequence total=31.197721 
+./seq.o 1
+child process 0
+s-MacBook-Pro-3:File Manlin$ sequence total=39.092927 
+./seq.o 1
+child process 0
+s-MacBook-Pro-3:File Manlin$ sequence total=36.388978 
+./seq.o 1
+child process 0
+s-MacBook-Pro-3:File Manlin$ sequence total=39.544834 
+./seq.o 2
+child process 0
+child process 1
+s-MacBook-Pro-3:File Manlin$ sequence total=81.555163 
+sequence total=82.238797 
+./seq.o 2
+child process 0
+child process 1
+s-MacBook-Pro-3:File Manlin$ sequence total=88.642427 
+sequence total=93.613245 
+./seq.o 2
+child process 0
+child process 1
+s-MacBook-Pro-3:File Manlin$ sequence total=93.703486 
+sequence total=95.220507 
+./seq.o 2
+child process 0
+child process 1
+s-MacBook-Pro-3:File Manlin$ sequence total=102.217154 
+sequence total=103.291871 
+./seq.o 1
+child process 0
+s-MacBook-Pro-3:File Manlin$ sequence total=36.721719 
+./ram.o 1
+child process 0
+s-MacBook-Pro-3:File Manlin$ random total=94.737397 
+./ram.o 1
+child process 0
+s-MacBook-Pro-3:File Manlin$ random total=85.745014 
+./ram.o 1
+child process 0
+s-MacBook-Pro-3:File Manlin$ random total=85.500682 
+purge
+Unable to purge disk buffers: Operation not permitted
+s-MacBook-Pro-3:File Manlin$ sudo purge
+Password:
+s-MacBook-Pro-3:File Manlin$ ./ram.o 1
+child process 0
+s-MacBook-Pro-3:File Manlin$ random total=112.200853 
+purge
+Unable to purge disk buffers: Operation not permitted
+s-MacBook-Pro-3:File Manlin$ sudo purge
+s-MacBook-Pro-3:File Manlin$ ./seq.o 1
+child process 0
+s-MacBook-Pro-3:File Manlin$ sequence total=29.934211 
+s-MacBook-Pro-3:File Manlin$ sudo purge
+s-MacBook-Pro-3:File Manlin$ ./seq.o 1
+child process 0
+s-MacBook-Pro-3:File Manlin$ sequence total=27.466371 
+./seq.o 2
+child process 0
+child process 1
+s-MacBook-Pro-3:File Manlin$ sequence total=100.764573 
+sequence total=104.475438 
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./seq.o 2
+child process 0
+child process 1
+s-MacBook-Pro-3:File Manlin$ sequence total=60.308993 
+sequence total=60.631600 
+clear
+
+s-MacBook-Pro-3:File Manlin$ sudo purge
+s-MacBook-Pro-3:File Manlin$ ./seq 1
+-bash: ./seq: No such file or directory
+s-MacBook-Pro-3:File Manlin$ ./seq.o 1
+child process 0
+s-MacBook-Pro-3:File Manlin$ sequence total=26.836541 
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./seq.o 2
+child process 0
+child process 1
+s-MacBook-Pro-3:File Manlin$ sequence total=72.439173 
+sequence total=73.998065 
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./seq.o 3
+child process 0
+child process 1
+child process 2
+s-MacBook-Pro-3:File Manlin$ sequence total=105.886508 
+sequence total=107.318698 
+sequence total=107.492005 
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./seq.o 4
+child process 0
+child process 1
+child process 2
+child process 3
+s-MacBook-Pro-3:File Manlin$ sequence total=91.016448 
+sequence total=91.421032 
+sequence total=94.817168 
+sequence total=96.774336 
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./seq.o 3
+child process 0
+child process 1
+child process 2
+s-MacBook-Pro-3:File Manlin$ sequence total=87.948572 
+sequence total=88.395574 
+sequence total=89.668275 
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./seq.o 3
+child process 0
+child process 1
+child process 2
+s-MacBook-Pro-3:File Manlin$ sequence total=75.863682 
+sequence total=77.593013 
+sequence total=79.871270 
+
+s-MacBook-Pro-3:File Manlin$ 
+s-MacBook-Pro-3:File Manlin$ ls
+cache_size.c		file.out		ram.o
+cont.out		file_generate.py	run.sh
+contention_read.c	file_read.c		seq.o
+s-MacBook-Pro-3:File Manlin$ ls
+cache_size.c		file.out		run.sh
+cont.out		file_generate.py	seq.o
+contention_read.c	file_read.c
+data			ram.o
+s-MacBook-Pro-3:File Manlin$ gcc -o cont.o contention_read.c 
+contention_read.c:71:31: warning: format specifies type 'int' but the argument
+      has type 'double' [-Wformat]
+        printf("%d random =%f us\n", total*1.0*0.34/1e3/N);
+                ~~                   ^~~~~~~~~~~~~~~~~~~~
+                %f
+contention_read.c:71:22: warning: more '%' conversions than data arguments
+      [-Wformat]
+        printf("%d random =%f us\n", total*1.0*0.34/1e3/N);
+                           ~^
+2 warnings generated.
+s-MacBook-Pro-3:File Manlin$ bash run.sh
+---sequential access---
+Password:
+1 sequential = 114.163131 us
+2 sequential = 125.830207 us
+2 sequential = 142.022169 us
+3 sequential = 146.737824 us
+3 sequential = 148.936364 us
+3 sequential = 156.669659 us
+4 sequential = 167.176198 us
+4 sequential = 171.103051 us
+4 sequential = 172.860975 us
+4 sequential = 181.588979 us
+5 sequential = 207.650693 us
+5 sequential = 213.875281 us
+5 sequential = 226.556685 us
+----random access----
+5 sequential = 239.248554 us
+5 sequential = 260.253003 us
+6 sequential = 250.840965 us
+6 sequential = 264.591684 us
+6 sequential = 267.763354 us
+6 sequential = 275.184294 us
+6 sequential = 277.389380 us
+6 sequential = 279.636767 us
+7 sequential = 248.301360 us
+7 sequential = 254.137977 us
+7 sequential = 259.227653 us
+7 sequential = 263.487676 us
+7 sequential = 265.650033 us
+7 sequential = 268.129111 us
+7 sequential = 268.632027 us
+8 sequential = 258.507308 us
+8 sequential = 259.584713 us
+8 sequential = 261.522916 us
+8 sequential = 270.662316 us
+8 sequential = 272.984935 us
+8 sequential = 273.306111 us
+8 sequential = 278.317265 us
+8 sequential = 281.568687 us
+9 sequential = 236.125054 us
+9 sequential = 225.112176 us
+9 sequential = 237.538308 us
+9 sequential = 233.165549 us
+9 sequential = 232.743267 us
+9 sequential = 239.539488 us
+9 sequential = 239.815620 us
+9 sequential = 240.837913 us
+9 sequential = 243.488247 us
+-1803542528 random =224.960111 us
+1744830464 random =204.376413 us
+1736451072 random =212.525847 us
+1417674752 random =211.051309 us
+1417684992 random =211.648891 us
+1409286144 random =212.915018 us
+-813694976 random =242.209312 us
+-796909568 random =243.493909 us
+-788529152 random =250.950363 us
+s-MacBook-Pro-3:File Manlin$ -796917760 random =262.198529 us
+-1174405120 random =270.078502 us
+-1166013952 random =273.028538 us
+-1166013952 random =287.084712 us
+-1174405120 random =290.698963 us
+-1166013952 random =290.126331 us
+-1635778560 random =267.621380 us
+-1635768320 random =278.795741 us
+-1627389952 random =279.292528 us
+-1644164608 random =288.565489 us
+-1635776512 random =290.573760 us
+-1635768320 random =291.434759 us
+1191182336 random =263.929788 us
+1199579136 random =266.088115 us
+1199570944 random =273.918974 us
+1191184384 random =272.807405 us
+1182796288 random =278.477604 us
+1174405120 random =285.990883 us
+1199580160 random =286.608989 us
+1811939328 random =244.379818 us
+1803550720 random =246.358882 us
+1811939328 random =246.771995 us
+1828716544 random =247.982641 us
+1811949568 random =254.035867 us
+1820327936 random =256.995115 us
+1811949568 random =257.580221 us
+1811949568 random =267.584916 us
+-1400897536 random =215.877269 us
+-1417666560 random =216.483918 us
+-1400897536 random =217.000911 us
+-1426063360 random =217.877693 us
+-1409286144 random =219.279587 us
+-1417664512 random =223.215756 us
+-1417664512 random =222.635421 us
+-1426063360 random =224.833677 us
+-1417664512 random =224.963421 us
+
+s-MacBook-Pro-3:File Manlin$ bash run.sh
+---sequential access---
+1 sequential = 44.599251 us
+2 sequential = 67.419853 us
+2 sequential = 70.391807 us
+3 sequential = 92.081237 us
+3 sequential = 93.878169 us
+3 sequential = 98.463666 us
+4 sequential = 117.334122 us
+4 sequential = 116.151626 us
+4 sequential = 118.174733 us
+4 sequential = 121.470043 us
+5 sequential = 174.230367 us
+5 sequential = 175.645962 us
+5 sequential = 180.592518 us
+5 sequential = 193.278216 us
+5 sequential = 197.601067 us
+----random access----
+6 sequential = 204.961176 us
+6 sequential = 207.356470 us
+6 sequential = 211.711693 us
+6 sequential = 224.911296 us
+6 sequential = 224.934520 us
+6 sequential = 218.224166 us
+7 sequential = 228.869205 us
+7 sequential = 229.900693 us
+7 sequential = 233.477207 us
+7 sequential = 235.026762 us
+7 sequential = 236.896405 us
+7 sequential = 241.478294 us
+7 sequential = 242.633008 us
+8 sequential = 220.522445 us
+8 sequential = 221.873161 us
+8 sequential = 224.006558 us
+8 sequential = 226.453851 us
+8 sequential = 229.978937 us
+8 sequential = 233.643796 us
+8 sequential = 247.221495 us
+8 sequential = 249.033691 us
+9 sequential = 199.432363 us
+9 sequential = 204.439418 us
+9 sequential = 204.109842 us
+9 sequential = 205.245418 us
+9 sequential = 207.788514 us
+9 sequential = 209.199610 us
+9 sequential = 213.255203 us
+9 sequential = 214.762443 us
+9 sequential = 215.881881 us
+-1140850688 random =210.165908 us
+-1191182336 random =193.647473 us
+-1199570944 random =193.656261 us
+578813952 random =207.000116 us
+562036736 random =214.347406 us
+562036736 random =222.437616 us
+-1728053248 random =227.111853 us
+-1728053248 random =235.069617 us
+-1744817664 random =239.065304 us
+-1736431616 random =245.788770 us
+s-MacBook-Pro-3:File Manlin$ -729808896 random =251.858053 us
+-721420288 random =260.693990 us
+-721420288 random =260.428718 us
+-729807872 random =266.522368 us
+-729806848 random =270.220428 us
+1073741824 random =259.432002 us
+1065353216 random =259.789814 us
+1065353216 random =260.256684 us
+1048576000 random =269.304255 us
+1056974848 random =270.379651 us
+1056974848 random =275.432658 us
+-1803550720 random =251.503599 us
+-1803550720 random =254.335679 us
+-1828716544 random =268.602018 us
+-1820317184 random =269.518967 us
+-1820317184 random =268.771962 us
+-1828716544 random =272.801189 us
+-1820315136 random =271.962241 us
+-1384120320 random =240.282884 us
+-1384120320 random =241.113596 us
+-1375731712 random =240.211526 us
+-1375731712 random =241.552755 us
+-1392504320 random =248.093174 us
+-1384110080 random =249.191639 us
+-1384110080 random =245.078486 us
+-1392498176 random =252.496422 us
+318767104 random =200.658406 us
+318767104 random =201.813563 us
+318775296 random =201.600357 us
+318769152 random =204.216855 us
+318769152 random =205.727407 us
+318775296 random =205.980465 us
+301989888 random =206.251183 us
+301989888 random =206.378907 us
+310391296 random =209.040489 us
+
+s-MacBook-Pro-3:File Manlin$ bash run.sh
+---sequential access---
+1 sequential = 42.955180 us
+2 sequential = 78.666946 us
+2 sequential = 78.772426 us
+3 sequential = 98.435224 us
+3 sequential = 101.316850 us
+3 sequential = 110.225017 us
+4 sequential = 137.765535 us
+4 sequential = 142.585976 us
+4 sequential = 145.644755 us
+4 sequential = 154.455305 us
+5 sequential = 171.108529 us
+5 sequential = 171.549111 us
+5 sequential = 178.961398 us
+5 sequential = 182.226209 us
+5 sequential = 188.067942 us
+6 sequential = 176.097748 us
+6 sequential = 180.520780 us
+6 sequential = 180.705100 us
+6 sequential = 178.302621 us
+----random access----
+6 sequential = 205.277279 us
+6 sequential = 207.401445 us
+7 sequential = 199.658998 us
+7 sequential = 206.748305 us
+7 sequential = 210.757546 us
+7 sequential = 210.789250 us
+7 sequential = 218.383535 us
+7 sequential = 222.201124 us
+7 sequential = 224.211475 us
+8 sequential = 189.160141 us
+8 sequential = 191.401198 us
+8 sequential = 199.581240 us
+8 sequential = 207.536875 us
+8 sequential = 211.779280 us
+8 sequential = 213.640765 us
+8 sequential = 216.267813 us
+8 sequential = 215.571325 us
+9 sequential = 177.760102 us
+9 sequential = 178.580682 us
+9 sequential = 179.296623 us
+9 sequential = 178.820977 us
+9 sequential = 179.328834 us
+9 sequential = 180.931129 us
+9 sequential = 181.057051 us
+9 sequential = 181.667622 us
+9 sequential = 181.918359 us
+-687863808 random =181.695760 us
+813703168 random =175.373324 us
+805308416 random =186.666157 us
+-738189312 random =196.448090 us
+-729808896 random =199.427893 us
+-738197504 random =201.947434 us
+947912704 random =236.825959 us
+947914752 random =239.822581 us
+931135488 random =237.319138 us
+939526656 random =255.905338 us
+-1493170176 random =255.424903 us
+-1509949440 random =255.782611 us
+-1509949440 random =258.626783 us
+-1501558272 random =266.068107 us
+-1493171200 random =266.739661 us
+226496512 random =245.070306 us
+234881024 random =255.238779 us
+226494464 random =256.067275 us
+218103808 random =257.940779 us
+226502656 random =263.485383 us
+226502656 random =264.178813 us
+s-MacBook-Pro-3:File Manlin$ 1526736896 random =259.830111 us
+1509949440 random =260.703675 us
+1509949440 random =260.946529 us
+1526736896 random =261.654481 us
+1518340608 random =262.473234 us
+1509949440 random =262.748378 us
+1526736896 random =263.755787 us
+486539264 random =231.418250 us
+478150656 random =237.428491 us
+461373440 random =237.817015 us
+469766656 random =239.269239 us
+461373440 random =239.422177 us
+478160896 random =239.787137 us
+478151680 random =239.818315 us
+478160896 random =241.505898 us
+1937773056 random =190.359789 us
+1929379840 random =190.944707 us
+1937771008 random =190.137870 us
+1929379840 random =192.103264 us
+1946167296 random =176.517559 us
+1946159104 random =190.781242 us
+1929379840 random =183.534897 us
+1929379840 random =180.259839 us
+1946158080 random =181.533791 us
+
+s-MacBook-Pro-3:File Manlin$ gcc -o cont.o contention_read.c 
+s-MacBook-Pro-3:File Manlin$ bash run.sh
+---sequential access---
+1 sequential = 43.387123 us
+2 sequential = 63.914689 us
+2 sequential = 64.189442 us
+3 sequential = 95.867511 us
+3 sequential = 96.941480 us
+3 sequential = 100.648035 us
+4 sequential = 150.604991 us
+4 sequential = 156.252240 us
+4 sequential = 158.062550 us
+4 sequential = 159.480075 us
+5 sequential = 184.821954 us
+5 sequential = 185.941683 us
+5 sequential = 186.076330 us
+5 sequential = 185.948510 us
+5 sequential = 187.774860 us
+----random access----
+6 sequential = 216.324821 us
+6 sequential = 229.148837 us
+6 sequential = 231.628921 us
+6 sequential = 233.092351 us
+6 sequential = 234.340347 us
+6 sequential = 236.471243 us
+7 sequential = 246.233717 us
+7 sequential = 249.467211 us
+7 sequential = 250.957470 us
+7 sequential = 255.903951 us
+7 sequential = 258.903978 us
+7 sequential = 258.990589 us
+7 sequential = 264.084961 us
+8 sequential = 230.121090 us
+8 sequential = 231.141447 us
+8 sequential = 237.439721 us
+8 sequential = 242.761722 us
+8 sequential = 243.788763 us
+8 sequential = 245.684236 us
+8 sequential = 247.228128 us
+8 sequential = 258.502344 us
+9 sequential = 216.305068 us
+9 sequential = 216.484612 us
+9 sequential = 218.419238 us
+9 sequential = 219.923285 us
+9 sequential = 219.531372 us
+9 sequential = 220.012581 us
+9 sequential = 221.468895 us
+9 sequential = 221.709109 us
+9 sequential = 222.007250 us
+1 random =210.666878 us
+2 random =194.929458 us
+2 random =197.428994 us
+3 random =209.419031 us
+3 random =213.868023 us
+3 random =216.388221 us
+4 random =244.635429 us
+4 random =244.880625 us
+4 random =245.907703 us
+s-MacBook-Pro-3:File Manlin$ 4 random =257.327622 us
+5 random =271.667103 us
+5 random =275.131917 us
+5 random =275.133010 us
+5 random =276.036872 us
+5 random =277.053757 us
+6 random =275.554264 us
+6 random =282.048029 us
+6 random =282.103270 us
+6 random =282.141859 us
+6 random =282.864935 us
+6 random =283.080186 us
+7 random =265.152431 us
+7 random =268.953888 us
+7 random =271.243806 us
+7 random =272.715527 us
+7 random =274.474784 us
+7 random =274.484955 us
+7 random =280.804513 us
+8 random =256.343813 us
+8 random =257.328120 us
+8 random =261.605185 us
+8 random =258.517151 us
+8 random =266.432191 us
+8 random =266.052612 us
+8 random =266.714870 us
+8 random =267.042538 us
+9 random =214.803332 us
+9 random =215.291433 us
+9 random =215.609300 us
+9 random =216.134225 us
+9 random =216.418290 us
+9 random =216.693753 us
+9 random =217.259368 us
+9 random =219.998323 us
+9 random =220.444566 us
+
+s-MacBook-Pro-3:File Manlin$ bash run.sh
+---sequential access---
+1 sequential = 26.862910 us
+2 sequential = 35.175252 us
+2 sequential = 35.479084 us
+----random access----
+1 random =175.205724 us
+2 random =205.183728 us
+2 random =209.015607 us
+3 sequential = 184.301129 us
+3 sequential = 189.046068 us
+3 sequential = 200.088396 us
+3 random =228.799916 us
+3 random =232.921134 us
+3 random =233.430197 us
+4 random =222.648775 us
+4 random =229.922128 us
+4 random =231.389206 us
+4 random =241.085322 us
+5 random =225.269911 us
+5 random =231.198851 us
+5 random =235.136518 us
+5 random =242.822983 us
+5 random =243.721033 us
+s-MacBook-Pro-3:File Manlin$ 6 random =240.965418 us
+6 random =240.939139 us
+6 random =246.203370 us
+6 random =253.301581 us
+6 random =259.578862 us
+6 random =263.833867 us
+7 random =241.816007 us
+7 random =244.580054 us
+7 random =247.898691 us
+7 random =248.362445 us
+7 random =249.159642 us
+7 random =256.051261 us
+7 random =256.025383 us
+8 random =218.310641 us
+4 sequential = 161.430339 us
+8 random =219.139783 us
+8 random =223.051184 us
+8 random =229.125110 us
+8 random =229.443262 us
+4 sequential = 175.641610 us
+4 sequential = 176.229255 us
+8 random =228.903792 us
+8 random =215.497960 us
+8 random =231.489105 us
+4 sequential = 181.053061 us
+9 random =196.918350 us
+9 random =197.050586 us
+9 random =196.992642 us
+9 random =195.805641 us
+9 random =198.867350 us
+9 random =199.606948 us
+9 random =201.256790 us
+9 random =200.688487 us
+9 random =203.816049 us
+5 sequential = 57.305100 us
+5 sequential = 58.749929 us
+5 sequential = 58.820772 us
+5 sequential = 58.900029 us
+5 sequential = 59.375639 us
+6 sequential = 71.679376 us
+6 sequential = 72.340980 us
+6 sequential = 72.962066 us
+6 sequential = 72.953759 us
+6 sequential = 73.003572 us
+6 sequential = 73.305695 us
+7 sequential = 72.884320 us
+7 sequential = 72.998842 us
+7 sequential = 73.159748 us
+7 sequential = 73.313428 us
+7 sequential = 73.311994 us
+7 sequential = 73.835558 us
+7 sequential = 74.006267 us
+8 sequential = 74.125692 us
+8 sequential = 74.610783 us
+8 sequential = 74.772913 us
+8 sequential = 74.983903 us
+8 sequential = 75.186793 us
+8 sequential = 75.990057 us
+8 sequential = 77.855600 us
+8 sequential = 78.110752 us
+9 sequential = 86.034840 us
+9 sequential = 86.971860 us
+9 sequential = 87.063448 us
+9 sequential = 87.252374 us
+9 sequential = 87.769948 us
+9 sequential = 90.205627 us
+9 sequential = 90.508005 us
+9 sequential = 91.375872 us
+9 sequential = 92.050478 us
+
+s-MacBook-Pro-3:File Manlin$ bash random.sh 
+----random access----
+1 random =157.207156 us
+2 random =194.518647 us
+2 random =195.013746 us
+3 random =233.638068 us
+3 random =236.720156 us
+3 random =244.478432 us
+4 random =266.703450 us
+4 random =267.040931 us
+4 random =267.936273 us
+4 random =268.389780 us
+s-MacBook-Pro-3:File Manlin$ 5 random =275.880071 us
+5 random =277.679618 us
+5 random =281.926483 us
+5 random =283.441656 us
+5 random =287.107829 us
+6 random =280.502147 us
+6 random =278.965949 us
+6 random =283.024343 us
+6 random =283.323080 us
+6 random =288.860321 us
+6 random =294.174074 us
+7 random =265.835733 us
+7 random =268.849494 us
+7 random =268.690951 us
+7 random =270.297747 us
+7 random =272.164449 us
+7 random =283.289716 us
+7 random =288.193909 us
+8 random =257.468461 us
+8 random =259.542073 us
+8 random =269.460324 us
+8 random =268.895037 us
+8 random =272.240174 us
+8 random =272.029762 us
+8 random =275.065881 us
+8 random =274.543176 us
+9 random =203.154075 us
+9 random =206.231555 us
+9 random =206.297580 us
+9 random =207.738841 us
+9 random =207.982145 us
+9 random =208.348966 us
+9 random =208.878566 us
+9 random =210.427516 us
+9 random =210.529931 us
+
+s-MacBook-Pro-3:File Manlin$ sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 8 1
+s-MacBook-Pro-3:File Manlin$ 8 random =123.231945 us
+8 random =123.221016 us
+8 random =123.795261 us
+8 random =124.108042 us
+8 random =124.204023 us
+8 random =124.270562 us
+8 random =124.409635 us
+8 random =124.534823 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./count.o 9 1
+-bash: ./count.o: No such file or directory
+s-MacBook-Pro-3:File Manlin$ ./cont.o 9 1
+s-MacBook-Pro-3:File Manlin$ 9 random =138.676454 us
+9 random =138.926093 us
+9 random =138.976685 us
+9 random =139.327853 us
+9 random =139.334750 us
+9 random =139.302601 us
+9 random =139.555201 us
+9 random =139.993457 us
+9 random =140.237668 us
+
+s-MacBook-Pro-3:File Manlin$ sudo purge
+s-MacBook-Pro-3:File Manlin$ clear
+
+s-MacBook-Pro-3:File Manlin$ clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+s-MacBook-Pro-3:File Manlin$ sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 1 0
+s-MacBook-Pro-3:File Manlin$ 1 sequential = 25.321030 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 2 0
+s-MacBook-Pro-3:File Manlin$ 2 sequential = 34.986293 us
+2 sequential = 35.236640 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 3 0
+s-MacBook-Pro-3:File Manlin$ 3 sequential = 44.365678 us
+3 sequential = 44.676514 us
+3 sequential = 44.765816 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 4 0
+s-MacBook-Pro-3:File Manlin$ 4 sequential = 52.044486 us
+4 sequential = 52.158926 us
+4 sequential = 52.698491 us
+4 sequential = 52.750953 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 5 0
+s-MacBook-Pro-3:File Manlin$ 5 sequential = 62.157855 us
+5 sequential = 62.159197 us
+5 sequential = 62.255852 us
+5 sequential = 62.231855 us
+5 sequential = 62.304681 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 6 0
+s-MacBook-Pro-3:File Manlin$ 6 sequential = 79.677925 us
+6 sequential = 79.751407 us
+6 sequential = 79.827868 us
+6 sequential = 79.919136 us
+6 sequential = 80.639772 us
+6 sequential = 80.702394 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 7 0
+s-MacBook-Pro-3:File Manlin$ 7 sequential = 72.144524 us
+7 sequential = 72.461172 us
+7 sequential = 72.546062 us
+7 sequential = 72.486321 us
+7 sequential = 73.601676 us
+7 sequential = 73.652205 us
+7 sequential = 74.156705 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 8 0
+s-MacBook-Pro-3:File Manlin$ 8 sequential = 74.655725 us
+8 sequential = 74.739619 us
+8 sequential = 74.847550 us
+8 sequential = 74.995118 us
+8 sequential = 75.050984 us
+8 sequential = 74.999574 us
+8 sequential = 75.834510 us
+8 sequential = 76.237023 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 8 0
+s-MacBook-Pro-3:File Manlin$ 8 sequential = 76.757183 us
+8 sequential = 77.102356 us
+8 sequential = 77.403379 us
+8 sequential = 79.673654 us
+8 sequential = 79.808605 us
+8 sequential = 79.725224 us
+8 sequential = 80.552041 us
+8 sequential = 80.683205 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 9 0
+s-MacBook-Pro-3:File Manlin$ 9 sequential = 114.326092 us
+9 sequential = 116.580539 us
+9 sequential = 116.838674 us
+9 sequential = 117.011130 us
+9 sequential = 117.275649 us
+9 sequential = 117.310766 us
+9 sequential = 117.384505 us
+9 sequential = 117.945536 us
+9 sequential = 117.995391 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 10 0
+s-MacBook-Pro-3:File Manlin$ 10 sequential = 110.523215 us
+10 sequential = 111.453806 us
+10 sequential = 114.180222 us
+10 sequential = 116.299986 us
+10 sequential = 118.030940 us
+10 sequential = 118.434345 us
+10 sequential = 120.005373 us
+10 sequential = 120.432775 us
+10 sequential = 121.162988 us
+10 sequential = 122.815010 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 1 1
+s-MacBook-Pro-3:File Manlin$ 1 random =88.520073 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 2 1
+s-MacBook-Pro-3:File Manlin$ 2 random =100.173779 us
+2 random =100.517091 us
+sudo purge ./cont.o 3 1
+s-MacBook-Pro-3:File Manlin$ sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 3 1
+s-MacBook-Pro-3:File Manlin$ 3 random =101.975601 us
+3 random =102.049492 us
+3 random =102.473071 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 4 1
+s-MacBook-Pro-3:File Manlin$ 4 random =110.612010 us
+4 random =110.756024 us
+4 random =111.618676 us
+4 random =111.654288 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 4 1
+s-MacBook-Pro-3:File Manlin$ 4 random =107.981744 us
+4 random =108.197727 us
+4 random =108.426383 us
+4 random =108.514941 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 5 1
+s-MacBook-Pro-3:File Manlin$ 5 random =122.079490 us
+5 random =122.226758 us
+5 random =122.450865 us
+5 random =122.458701 us
+5 random =123.330361 us
+./cont.o 5 1
+s-MacBook-Pro-3:File Manlin$ 5 random =147.597639 us
+5 random =147.783100 us
+5 random =147.827205 us
+5 random =148.031947 us
+5 random =148.368560 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 5 1
+s-MacBook-Pro-3:File Manlin$ 5 random =113.206444 us
+5 random =113.408990 us
+5 random =113.489846 us
+5 random =114.074930 us
+5 random =114.290712 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 6 1
+s-MacBook-Pro-3:File Manlin$ 6 random =113.792201 us
+6 random =114.379869 us
+6 random =114.398117 us
+6 random =114.736508 us
+6 random =114.806257 us
+6 random =114.931343 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 7 1
+s-MacBook-Pro-3:File Manlin$ 7 random =126.822724 us
+7 random =126.893138 us
+7 random =126.947899 us
+7 random =127.653776 us
+7 random =127.948426 us
+7 random =127.892971 us
+7 random =127.994814 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 8 1
+s-MacBook-Pro-3:File Manlin$ 8 random =124.090115 us
+8 random =124.255022 us
+8 random =124.356027 us
+8 random =124.793006 us
+8 random =124.835349 us
+8 random =125.101607 us
+8 random =125.149741 us
+8 random =125.328157 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 9 1
+s-MacBook-Pro-3:File Manlin$ 9 random =132.452453 us
+9 random =132.430131 us
+9 random =132.492293 us
+9 random =132.628122 us
+9 random =132.644229 us
+9 random =132.864890 us
+9 random =133.151424 us
+9 random =133.975913 us
+9 random =134.200815 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 10 1
+s-MacBook-Pro-3:File Manlin$ 10 random =152.265440 us
+10 random =152.417190 us
+10 random =152.656983 us
+10 random =152.819276 us
+10 random =153.169017 us
+10 random =153.823435 us
+10 random =153.843811 us
+10 random =153.826142 us
+10 random =154.044775 us
+10 random =154.474315 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 1 1
+s-MacBook-Pro-3:File Manlin$ 1 random =87.968696 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 2 1
+s-MacBook-Pro-3:File Manlin$ 2 random =99.356568 us
+2 random =100.167955 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 2 1
+s-MacBook-Pro-3:File Manlin$ 2 random =99.189843 us
+2 random =99.526067 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 3 1
+s-MacBook-Pro-3:File Manlin$ 3 random =104.105962 us
+3 random =104.559397 us
+3 random =104.604404 us
+sudo purge
+s-MacBook-Pro-3:File Manlin$ ./cont.o 3 1
+s-MacBook-Pro-3:File Manlin$ 3 random =103.216074 us
+3 random =103.333578 us
+3 random =103.366895 us
+
