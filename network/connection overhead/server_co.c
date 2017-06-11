@@ -59,6 +59,7 @@ int main(int argc , char *argv[])
         unsigned long long diff=0;
 
         begin = rdtsc();
+        
         close(newsockfd);
         
         end = rdtsc();
@@ -66,7 +67,7 @@ int main(int argc , char *argv[])
         diff = end - begin;
         
         printf("connection tear down cycles = %llu \n", diff);
-        printf("connection tear down times = %llu \n", (diff* 1.0*0.34/(loops*1e6)));
+        printf("connection tear down times = %f \n", diff* 1.0*0.34/1e6);
         
     }
     close(sockfd);
