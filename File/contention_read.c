@@ -4,6 +4,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <string.h>
 
 static inline unsigned long long rdtsc(void) {
     unsigned lo, hi;
@@ -35,7 +36,8 @@ void sequence_access(char* filename)
     }
     close(file);
     free(buffer);
-    printf("sequence total=%f \n", total*1.0/N);
+    printf("sequence total=%f \n", total*1.0*0.34/1e3/N);
+    //return (total*1.0/N);
 }
 
 void random_access(char* filename)
@@ -50,7 +52,7 @@ void random_access(char* filename)
 
 	unsigned long long begin;
 	unsigned long long end;
-	unsigned long long total;
+	unsigned long long total = 0;
 
 	off_t N = FILE_SIZE / BLOCK_SIZE;
 	for(int i = 0; i < N; i++)
@@ -65,8 +67,10 @@ void random_access(char* filename)
 	free(buffer);
 	close(file);
 
-	printf("random total=%f \n", total*1.0/N);
+	printf("random total=%f \n", total*1.0*0.34/1e3/N);
+	//return total*1.0/N;
 }
+
 
 int main(int argc, const char* argv[])
 {
@@ -94,6 +98,7 @@ int main(int argc, const char* argv[])
 
 	pid_t child[16];
 	int i = 0;
+	double time[16] = {0};
 	for(; i < n; i++)
 	{
 		child[i] = fork();
@@ -106,12 +111,22 @@ int main(int argc, const char* argv[])
 		{
 			//child process
 			printf("child process %d\n", i);
-			random_access(filename[i]);
-			//sequence_access(filename[i]);
-			exit(0);
+			//random_access(filename[i]);
+			sequence_access(filename[i]);
+			exit(1);
 		}else{
 			//parent process
+			//wait(NULL);
 		}
 	}
+	/*
+	double sum = 0;
+	for(int j = 0; j < n; j++)
+	{
+		printf("time = %f\n", time[i]/(n*1.0));
+		sum = sum + time[i];
+	}
+	printf("time = %f\n", sum/(n*1.0));
+	*/
 	return 0;
 }

@@ -15,17 +15,18 @@ for x in array_gb:
   content = numpy.random.bytes(x*1024*1024*1024)
   fp.write(content);
   fp.close()
-
+'''
 
 for x in range(16):
 	fp = open("data/file%d" % x, 'w+b')
 	content = numpy.random.bytes(64*1024*1024)
 	fp.write(content)
 	fp.close()
+
+
 '''
-
-
 fp = open("data/cache", 'w+b')
 content = numpy.random.bytes(8*1024*1024*1024)
 fp.write(content)
 fp.close()
+'''
