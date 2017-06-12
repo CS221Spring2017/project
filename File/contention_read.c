@@ -19,43 +19,40 @@ void sequence_access_loop(char* filename, int n)
 {
 
 	int file = open(filename, O_RDONLY);	
-	/*
+	
 	if(fcntl(file, F_NOCACHE, 1) == -1)
     	printf("Disable Cache Failed.\n");
-	*/
+	
     void *buffer = malloc(BLOCK_SIZE);
     int N = FILE_SIZE / BLOCK_SIZE;
 
     unsigned long long begin, end;
     unsigned long long total = 0;
-    for(int j = 0; j < N*10; j++)
+    for(int j = 0; j < 100; j++)
     {
     	for(int i = 0; i < N; i++)
 	    {
-	    	begin = rdtsc();
 			read(file, buffer, BLOCK_SIZE);
-			end = rdtsc();
-			total += end - begin;
 	    }
     }
     close(file);
     free(buffer);
-    printf("%d sequential = %f us\n", n, total*1.0*0.34/1e3/N);
+    printf("quit\n");
 }
 void sequence_access(char* filename, int n)
 {
 
 	int file = open(filename, O_RDONLY);	
-	/*
+	
 	if(fcntl(file, F_NOCACHE, 1) == -1)
     	printf("Disable Cache Failed.\n");
-	*/
+	
     void *buffer = malloc(BLOCK_SIZE);
     int N = FILE_SIZE / BLOCK_SIZE;
 
     unsigned long long begin, end;
     unsigned long long total = 0;
-    for(int j = 0; j < N*10; j++)
+    for(int j = 0; j < N; j++)
     {
     	begin = rdtsc();
 		read(file, buffer, BLOCK_SIZE);
@@ -69,32 +66,33 @@ void sequence_access(char* filename, int n)
 
 void random_access_loop(char* filename, int n)
 {
-	int file = open(filename, O_RDONLY);	
-	/*
+	int file = open(filename, O_RDONLY);
 	if(fcntl(file, F_NOCACHE, 1) == -1) {
         printf("Failed to disable cache.\n");
     }
-    */
+    
 	void *buffer = malloc(BLOCK_SIZE);
 	off_t N = FILE_SIZE / BLOCK_SIZE;
-	while(1)
+	for(int j = 0; j < 5; j++)
 	{
-		off_t offset = rand() % N;
-		lseek(file, offset* BLOCK_SIZE, SEEK_SET);
-		read(file, buffer, BLOCK_SIZE);
+		for(int i = 0; i < N; i++)
+		{
+			off_t offset = rand() % N;
+			lseek(file, offset* BLOCK_SIZE, SEEK_SET);
+			read(file, buffer, BLOCK_SIZE);
+		}
 	}
 	free(buffer);
 	close(file);
+	printf("quit\n");
 }
 
 void random_access(char* filename, int n)
 {
 	int file = open(filename, O_RDONLY);
-	/*
 	if(fcntl(file, F_NOCACHE, 1) == -1) {
         printf("Failed to disable cache.\n");
     }
-    */
 	void *buffer = malloc(BLOCK_SIZE);
 
 	unsigned long long begin;
@@ -125,7 +123,6 @@ int main(int argc, const char* argv[])
 	}
 	int n = atoi(argv[1]);
 	int rand = atoi(argv[2]);
-
 	char* filename[16];
 	filename[0] = "data/file0";
 	filename[1] = "data/file1";
