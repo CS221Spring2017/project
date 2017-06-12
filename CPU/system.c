@@ -24,10 +24,10 @@ int main(int argc, char** argv)
 
 	for(int i = 0; i < nloops; i++)
 	{
-		uint64_t tid64;
+		//uint64_t tid64;
 		begin = rdtsc();
-		pthread_threadid_np(NULL, &tid64);
-		//tid = syscall(SYS_gettid);
+		//pthread_threadid_np(NULL, &tid64);
+		tid = syscall(SYS_gettid);
 		end = rdtsc();
 		time += end - begin;
 		printf("%llu\n",time);
