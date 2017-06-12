@@ -1,6 +1,8 @@
 #include "stdlib.h"
 #include "stdio.h"
 #include "unistd.h"
+#define _GNU_SOURCE         
+#include <sys/syscall.h>   
 
 static inline unsigned long long rdtsc(void) {
 	unsigned lo, hi;
@@ -16,21 +18,13 @@ int main(int argc, char** argv)
 
 	for(int i = 0; i < nloops; i++)
 	{
-		pid_t pid = fork();
-		if(pid == 0)
-		{
-			begin = rdtsc();
-			getpid();
-			end = rdtsc();
-			time = end - begin;
-			printf("%llu cycles\n", time);	
+		pid_t tid;
+		begin = rdtsc();
+		tid = syscall(SYS_gettid);
+		end = rdtsc();
+		time = end - begin;
+		printf("%llu cycles\n", time);	
 			return 0;		
-		}
-		if(pid == -1)
-		{
-			printf("fork faliled\n");
-			return 0;
-		}
-	}	
+	}
 	return 0;
 }
